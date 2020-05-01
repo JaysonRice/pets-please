@@ -1,0 +1,11 @@
+.MyPetsContainer {
+    border: solid 2px blue;
+}
+
+.MainFeedContainer {
+border: solid 2px red;
+}
+
+.FollowersContainer {
+    border: solid 2px green;
+}

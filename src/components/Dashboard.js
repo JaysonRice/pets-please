@@ -6,18 +6,18 @@ import { PetProvider } from "./petFeed/PetProvider"
 
 export default () => (
     <>
-        <div className="MainContainer">
+        <section className="MainContainer">
             <div className="MyPetsContainer">
                 <PetProvider>
                     <MyPetList />
                 </PetProvider>
             </div>
             <div className="MainFeedContainer">
-
+                <h1>pet feed</h1>
             </div>
             <div className="FollowersContainer">
-
+                <h1>followers</h1>
             </div>
-        </div>
+        </section>
     </>
 )

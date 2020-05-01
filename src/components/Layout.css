@@ -1,0 +1,25 @@
+.MainContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0.75rem;
+}
+
+.MyPetsContainer {
+    flex-basis: 20%;
+    padding: 2rem;
+    margin: 0.5rem
+}
+
+.MainFeedContainer {
+    display: flex;
+    flex-basis: 50%;
+    padding: 2rem;
+    margin: 0.5rem
+}
+
+.FollowersContainer {
+    display: flex;
+    flex-basis: 20%;
+    padding: 2rem;
+    margin: 0.5rem
+}

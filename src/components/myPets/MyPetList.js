@@ -3,6 +3,7 @@ import MyPet from "./MyPet"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import AddPetForm from "./AddPetForm"
 import { PetContext } from "../petFeed/PetProvider"
+import { UserContext } from "../profiles/UserProvider"
 
 export default () => {
 
@@ -10,13 +11,17 @@ export default () => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
+
+    const currentUserId = localStorage.getItem('pets_please_user')
+    const filteredUserPets = pets.filter(userPet => userPet.userId === parseInt(currentUserId));
+
     return (
         <>
             <h2>My Pets</h2>
 
             <ul className="pets">
                 {
-                    pets.map(pet => {
+                    filteredUserPets.map(pet => {
                         
                         return <MyPet key={pet.id} pet={pet} />
                     })
