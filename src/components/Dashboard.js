@@ -3,19 +3,22 @@ import "./Layout.css"
 import "./PetsPlease.css"
 import MyPetList from "./myPets/MyPetList"
 import { PetProvider } from "./petFeed/PetProvider"
+import { PetTypeProvider } from "./petFeed/PetTypeProvider"
 
 export default () => (
     <>
-        <section className="MainContainer">
-            <div className="MyPetsContainer">
+        <section className="mainContainer">
+            <div className="myPetsContainer">
                 <PetProvider>
-                    <MyPetList />
+                    <PetTypeProvider>
+                        <MyPetList />
+                    </PetTypeProvider>
                 </PetProvider>
             </div>
-            <div className="MainFeedContainer">
+            <div className="mainFeedContainer">
                 <h1>pet feed</h1>
             </div>
-            <div className="FollowersContainer">
+            <div className="followersContainer">
                 <h1>followers</h1>
             </div>
         </section>
