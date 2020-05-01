@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react"
 
-
 export const PetContext = React.createContext()
 
-
 export const PetProvider = (props) => {
-
     const [pets, setPets] = useState([])
 
     const getPets = () => {
