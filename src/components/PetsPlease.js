@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import Dashboard from "./Dashboard"
+import Auth from "./auth/Auth"
 
 export default () => {
+    const [check, update] = useState(false)
+    const toggle = () => update(!check)
 
     return (
-        <div>
-            <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/v1588278178/RedCropped_xxl9bv.png" alt="pets please logo"/>
-        </div>
+        localStorage.getItem("pets_please_user") ? <Dashboard /> : <Auth toggle={toggle} />
     )
 }
