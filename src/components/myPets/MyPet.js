@@ -9,9 +9,9 @@ export default ({ pet }) => {
     return (
         <div className="petCard">
             <Card style={{ width: '15rem', }}>
-                <CardImg top width="100%" src={pet.petpic.url} alt="Card image cap" />
                 <CardBody>
-                    <CardTitle>{pet.name}</CardTitle>
+                    <h4>{pet.name}</h4>
+                    <CardSubtitle>{pet.pettype.name}</CardSubtitle>
                     <Button color="primary">Edit</Button>
                 </CardBody>
             </Card>

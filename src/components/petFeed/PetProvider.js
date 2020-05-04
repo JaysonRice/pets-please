@@ -6,13 +6,13 @@ export const PetProvider = (props) => {
     const [pets, setPets] = useState([])
 
     const getPets = () => {
-        return fetch("http://localhost:8088/pets?_expand=user&_expand=pettype&_expand=petpic")
+        return fetch("http://localhost:8088/pets?_expand=user&_expand=pettype")
             .then(res => res.json())
             .then(setPets)
     }
 
     const addPet = pet => {
-        return fetch("http://localhost:8088/pets?_expand=user&_expand=pettype&_expand=petpic", {
+        return fetch("http://localhost:8088/pets?_expand=user&_expand=pettype", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

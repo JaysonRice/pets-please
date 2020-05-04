@@ -1,11 +1,10 @@
-import React, { useContext, useRef } from "react"
+import React, { useContext, useRef, useState } from "react"
 import { PetContext } from "../petFeed/PetProvider"
 import { PetTypeContext } from "../petFeed/PetTypeProvider"
 
 export default props => {
     const { addPet } = useContext(PetContext)
     const { petTypes } = useContext(PetTypeContext)
-
     const name = useRef()
     const petType = useRef()
     const currentUserId = localStorage.getItem('pets_please_user')
@@ -21,7 +20,7 @@ export default props => {
                 pettypeId: petTypeId,
                 userId: parseInt(currentUserId)
             })
-            .then(props.toggler)
+                .then(props.toggler)
         }
     }
 
@@ -61,6 +60,7 @@ export default props => {
                     </select>
                 </div>
             </fieldset>
+
             <button type="submit"
                 onClick={
                     evt => {
