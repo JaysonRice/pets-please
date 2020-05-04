@@ -11,11 +11,11 @@ export default ({ petpic, user }) => {
     return (
         <>
         <div className="petCard">
-            <Card style={{ width: '15rem', }}>
+            <Card style={{ width: '30rem', }}>
                 <CardImg top width="100%" src={petpic.url} alt="Card image cap" />
                 <CardBody>
                     <h4>{petpic.pet.name}</h4>
-                    <CardSubtitle>Posted By: {user.username}</CardSubtitle>
+                    {/* <CardSubtitle>Posted By: {user.username}</CardSubtitle> */}
                 </CardBody>
             </Card>
         </div>

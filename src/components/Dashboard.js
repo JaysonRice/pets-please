@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import "./Layout.css"
 import "./PetsPlease.css"
 import MyPetList from "./myPets/MyPetList"
+import MainFeedPetList from "./petFeed/MainFeedPetList"
 import { PetProvider } from "./petFeed/PetProvider"
 import { PetTypeProvider } from "./petFeed/PetTypeProvider"
 import { PetPicProvider } from "./profiles/PetPictureProvider"
-import MainFeedPetList from "./petFeed/MainFeedPetList"
 import { UserProvider } from "./profiles/UserProvider"
 
 export default () => (
@@ -23,13 +23,13 @@ export default () => (
             </div>
 
             <div className="mainFeedContainer">
-                <PetProvider>
-                    <PetPicProvider>
+                <PetPicProvider>
+                    <PetProvider>
                         <UserProvider>
                             <MainFeedPetList />
                         </UserProvider>
-                    </PetPicProvider>
-                </PetProvider>
+                    </PetProvider>
+                </PetPicProvider>
 
             </div>
             <div className="followersContainer">
