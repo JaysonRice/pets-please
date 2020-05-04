@@ -23,13 +23,6 @@ export const PetTypeProvider = (props) => {
             .then(getPetTypes)
     }
 
-    const deletePetType = petTypeId => {
-        return fetch(`http://localhost:8088/petTypes/${petTypeId}`, {
-            method: "DELETE"
-        })
-            .then(getPetTypes)
-    }
-
     useEffect(() => {
         getPetTypes()
     }, [])
@@ -38,8 +31,7 @@ export const PetTypeProvider = (props) => {
         <PetTypeContext.Provider value={
             {
                 petTypes,
-                addPetType,
-                deletePetType,
+                addPetType
             }
         }>
             {props.children}
