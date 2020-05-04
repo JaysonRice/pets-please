@@ -27,7 +27,7 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
 
     const updatePet = () => {
         const petTypeId = parseInt(updatedPet.petTypeId)
-        debugger
+        
         if (petTypeId === 0) {
             window.alert("Please select a pet type")
         } else {
@@ -81,7 +81,6 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
             <Button outline color="primary" type="submit" 
                 onClick={evt => {
                     evt.preventDefault()
-                    debugger
                     updatePet()
                 }}>
                 Save Updates

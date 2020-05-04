@@ -7,13 +7,13 @@ export const PetPicProvider = (props) => {
     const [petPics, setPetPics] = useState([])
 
     const getPetPics = () => {
-        return fetch("http://localhost:8088/petpics")
+        return fetch("http://localhost:8088/petpics?_expand=pet")
             .then(res => res.json())
             .then(setPetPics)
     }
 
     const addPetPic = petPic => {
-        return fetch("http://localhost:8088/petpics", {
+        return fetch("http://localhost:8088/petpics?_expand=pet", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
