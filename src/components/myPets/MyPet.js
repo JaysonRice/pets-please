@@ -26,7 +26,7 @@ const toggleEdit = () => setEditModal(!editModal)
                 <CardBody>
                     <h4>{pet.name}</h4>
                     <CardSubtitle>{pet.pettype.name}</CardSubtitle>
-                    <Button onClick={toggleEdit} color="primary">Edit</Button>
+                    <Button onClick={toggleEdit} outline color="primary">Edit</Button>
                 </CardBody>
             </Card>
         </div>
@@ -37,7 +37,7 @@ const toggleEdit = () => setEditModal(!editModal)
             </ModalHeader>
             <ModalBody>
                 <EditPetForm key={pet.id} toggleEdit={toggleEdit} pet={pet} {...pet} />
-                <Button color="danger" onClick={() => {
+                <Button outline color="danger" onClick={() => {
                         deletePet(pet.id)
                         toggleEdit()
                     }}>Delete Pet</Button>

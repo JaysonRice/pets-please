@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react"
 import { PetContext } from "../petFeed/PetProvider"
 import { PetTypeContext } from "../petFeed/PetTypeProvider"
+import { Button } from 'reactstrap';
 
 export const EditPetForm = ({ pet, user, toggleEdit }) => {
     const { petTypes } = useContext(PetTypeContext)
@@ -77,14 +78,14 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
                     />
                 </div>
             </fieldset>
-            <button type="submit" className="btn btn-primary"
+            <Button outline color="primary" type="submit" 
                 onClick={evt => {
                     evt.preventDefault()
                     debugger
                     updatePet()
                 }}>
                 Save Updates
-            </button>
+            </Button>
         </form>
     )
 }

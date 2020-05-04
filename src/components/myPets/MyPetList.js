@@ -15,12 +15,14 @@ export default () => {
     return (
         <>
             <div className="logoContainer">
+            
                 <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/c_scale,w_200/v1588278178/RedCropped_xxl9bv.png" alt="" />
-                <Button>Logout</Button>
+                <Button size="sm">Logout</Button>
             </div>
 
             <h2>My Pets</h2>
 
+            <Button block outline color="danger">Gallery</Button>
             <div className="pets">
                 {
                     filteredUserPets.map(pet => {
@@ -30,7 +32,7 @@ export default () => {
                 }
             </div>
 
-            <Button onClick={toggle}>Add Pet</Button>
+            <Button color="primary" onClick={toggle}>Add Pet</Button>
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
