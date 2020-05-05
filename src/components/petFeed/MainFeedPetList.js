@@ -9,53 +9,58 @@ export default () => {
     const { petPics } = useContext(PetPicContext)
     const { users } = useContext(UserContext)
 
-    const [currentlyLoggedUser, setCurrentlyLoggedUser] = useState({
-    id: 0,
-    name: "defaultUser",
-    email: "ja@ja.com",
-    username: "Jayboi",
-    password: 123,
-    followers:[]
-})
+//     const [currentlyLoggedUser, setCurrentlyLoggedUser] = useState({
+//     id: 0,
+//     name: "defaultUser",
+//     email: "ja@ja.com",
+//     username: "Jayboi",
+//     password: 123,
+//     followers:[]
+// })
 
-const [currentFollowers, setCurrentFollowers] = useState([])
+// const [currentFollowers, setCurrentFollowers] = useState([])
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        let followerIds = []
+        
+        // let followerIds = []
     
-        currentFollowers.forEach(follower => {
-            followerIds.push(follower.followingId)
-        })
+        // currentFollowers.forEach(follower => {
+        //     followerIds.push(follower.followingId)
+        // })
     
-        let userAndFriendPetArray = []
-        followerIds.forEach(singleId => {
-            const filteredFriendPets =  petPics.filter(userPet => userPet.userId === parseInt(singleId));
-            userAndFriendPetArray = userAndFriendPetArray.concat(filteredFriendPets)
-            });
+       
 
-    },
-    [currentFollowers])
+    // },
+    // [currentFollowers])
 
-// Show only the user's pets in the pet feed
+// // Show only the user's pets in the pet feed
     const currentUserId = localStorage.getItem('pets_please_user')
     const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
     
-useEffect (() => {
-
     const currentUserInfo = users.find(user => user.id === parseInt(currentUserId))
-    setCurrentlyLoggedUser(currentUserInfo)
+    
+    const followers = currentUserInfo.followers
 
-},[users])
+// 1. Get iterate followers and get pets for each one
+// 2. For each pet, iterate array of pets, get pic ID, find
+// 3. State variable for all pictures in big array to be rendered 
 
-useEffect (() => {
-if (currentlyLoggedUser !== undefined){
-    setCurrentFollowers(currentlyLoggedUser.followers)
-} else {
-    console.log("else")
-}
+// useEffect (() => {
 
-},[currentlyLoggedUser])
+    // const currentUserInfo = users.find(user => user.id === parseInt(currentUserId))
+    // setCurrentlyLoggedUser(currentUserInfo)
+
+// },[users])
+
+// useEffect (() => {
+// if (currentlyLoggedUser !== undefined){
+//     setCurrentFollowers(currentlyLoggedUser.followers)
+// } else {
+//     console.log("else")
+// }
+
+// },[currentlyLoggedUser])
 
     return (
         <>
