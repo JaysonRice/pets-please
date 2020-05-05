@@ -7,6 +7,7 @@ import { PetProvider } from "./petFeed/PetProvider"
 import { PetTypeProvider } from "./petFeed/PetTypeProvider"
 import { PetPicProvider } from "./profiles/PetPictureProvider"
 import { UserProvider } from "./profiles/UserProvider"
+import { FilterByType } from "./petFeed/FilterPetFeed"
 
 export default () => (
     <>
@@ -26,7 +27,10 @@ export default () => (
                 <PetPicProvider>
                     <PetProvider>
                         <UserProvider>
-                            <MainFeedPetList />
+                            <PetTypeProvider>
+                                <FilterByType />
+                                <MainFeedPetList />
+                            </PetTypeProvider>
                         </UserProvider>
                     </PetProvider>
                 </PetPicProvider>

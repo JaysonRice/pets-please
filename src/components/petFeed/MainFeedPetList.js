@@ -1,16 +1,27 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import MainFeedPet from "./MainFeedPet"
 import "./MainFeedPetList.css"
 import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 
-export default () => {
+export default ({petTypes}) => {
 
     const { petPics } = useContext(PetPicContext)
     const { users } = useContext(UserContext)
 
+    const [ filteredPets, setFilteredPets ] = useState([])
+
     const currentUserId = localStorage.getItem('pets_please_user')
     const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
+
+    useEffect(() => {
+        debugger
+        if (petTypes !== 0) {
+        const subset = filteredUserPics.filter(p => p.pettypeId === petTypes)
+        setFilteredPets(subset)
+        } else 
+        {setFilteredPets([])}
+    }, [petTypes, petPics])
 
     return (
         <>
