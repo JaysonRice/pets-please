@@ -4,23 +4,58 @@ import "./MainFeedPetList.css"
 import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 
-export default ({petTypes}) => {
-
+export default () => {
+    
     const { petPics } = useContext(PetPicContext)
     const { users } = useContext(UserContext)
 
-    const [ filteredPets, setFilteredPets ] = useState([])
+    const [currentlyLoggedUser, setCurrentlyLoggedUser] = useState({
+    id: 0,
+    name: "defaultUser",
+    email: "ja@ja.com",
+    username: "Jayboi",
+    password: 123,
+    followers:[]
+})
 
-    const currentUserId = localStorage.getItem('pets_please_user')
-    const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
+const [currentFollowers, setCurrentFollowers] = useState([])
 
     useEffect(() => {
-        if (petTypes !== 0) {
-        const subset = filteredUserPics.filter(p => p.pettypeId === petTypes)
-        setFilteredPets(subset)
-        } else 
-        {setFilteredPets([])}
-    }, [petTypes, petPics])
+
+        let followerIds = []
+    
+        currentFollowers.forEach(follower => {
+            followerIds.push(follower.followingId)
+        })
+    
+        let userAndFriendPetArray = []
+        followerIds.forEach(singleId => {
+            const filteredFriendPets =  petPics.filter(userPet => userPet.userId === parseInt(singleId));
+            userAndFriendPetArray = userAndFriendPetArray.concat(filteredFriendPets)
+            });
+
+    },
+    [currentFollowers])
+
+// Show only the user's pets in the pet feed
+    const currentUserId = localStorage.getItem('pets_please_user')
+    const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
+    
+useEffect (() => {
+
+    const currentUserInfo = users.find(user => user.id === parseInt(currentUserId))
+    setCurrentlyLoggedUser(currentUserInfo)
+
+},[users])
+
+useEffect (() => {
+if (currentlyLoggedUser !== undefined){
+    setCurrentFollowers(currentlyLoggedUser.followers)
+} else {
+    console.log("else")
+}
+
+},[currentlyLoggedUser])
 
     return (
         <>

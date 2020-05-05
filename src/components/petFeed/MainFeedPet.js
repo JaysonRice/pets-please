@@ -1,13 +1,11 @@
 import React from "react"
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Modal, 
-    ModalHeader, ModalBody, ModalFooter 
+    Card, CardImg, CardBody, CardSubtitle
 } from 'reactstrap';
 import "./MainFeedPetList.css"
 
 export default ({ petpic, user }) => {
-  debugger
+  
     return (
         <>
         <div className="petCard">

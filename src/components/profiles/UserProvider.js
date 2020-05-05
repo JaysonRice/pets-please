@@ -12,7 +12,7 @@ export const UserProvider = (props) => {
     }
 
     const addUser = user => {
-        return fetch("http://localhost:8088/users?_embed=followers", {
+        return fetch("http://localhost:8088/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -22,10 +22,6 @@ export const UserProvider = (props) => {
             .then(getUsers)
     }
 
-    /*
-        Load all animals when the component is mounted. Ensure that
-        an empty array is the second argument to avoid infinite loop.
-    */
     useEffect(() => {
         getUsers()
     }, [])

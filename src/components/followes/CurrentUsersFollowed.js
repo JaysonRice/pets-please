@@ -6,7 +6,7 @@ export const GetFollowerObjects = () => {
     const { users } = useContext(UserContext)
 
     const currentUserInfo = users.find(user => user.id === parseInt(currentUserId))
-    
+
     const followers = currentUserInfo.followers
 
     //convert follower relationships into user objects
@@ -23,7 +23,7 @@ export const GetFollowerIdArray = () => {
     const { users } = useContext(UserContext)
 
     const currentUserInfo = users.find(user => user.id === parseInt(currentUserId))
-    debugger
+    
     const followers = currentUserInfo.followers
 
     let followerIds = []

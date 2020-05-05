@@ -12,33 +12,23 @@ import { FilterByType } from "./petFeed/FilterPetFeed"
 export default () => (
     <>
         <section className="mainContainer">
-
-            <div className="myPetsContainer">
-                <UserProvider>
-                    <PetProvider>
-                        <PetTypeProvider>
-                            <MyPetList />
-                        </PetTypeProvider>
-                    </PetProvider>
-                </UserProvider>
-            </div>
-
-            <div className="mainFeedContainer">
+            <PetProvider>
                 <PetPicProvider>
-                    <PetProvider>
+                    <PetTypeProvider>
                         <UserProvider>
-                            <PetTypeProvider>
-                                <FilterByType />
+                            <div className="myPetsContainer">
+                                <MyPetList />
+                            </div>
+                            <div className="mainFeedContainer">
                                 <MainFeedPetList />
-                            </PetTypeProvider>
+                            </div>
+                            <div className="followersContainer">
+                                <h1>followers</h1>
+                            </div>
                         </UserProvider>
-                    </PetProvider>
+                    </PetTypeProvider>
                 </PetPicProvider>
-
-            </div>
-            <div className="followersContainer">
-                <h1>followers</h1>
-            </div>
+            </PetProvider>
 
         </section>
     </>
