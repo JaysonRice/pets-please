@@ -7,7 +7,7 @@ import {
 import "./MainFeedPetList.css"
 
 export default ({ petpic, user }) => {
-
+  debugger
     return (
         <>
         <div className="petCard">
@@ -15,7 +15,7 @@ export default ({ petpic, user }) => {
                 <CardImg top width="100%" src={petpic.url} alt="Card image cap" />
                 <CardBody>
                     <h4>{petpic.pet.name}</h4>
-                    {/* <CardSubtitle>Posted By: {user.username}</CardSubtitle> */}
+                    <CardSubtitle>Posted By: {user.username}</CardSubtitle>
                 </CardBody>
             </Card>
         </div>

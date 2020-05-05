@@ -15,7 +15,6 @@ export default ({petTypes}) => {
     const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
 
     useEffect(() => {
-        debugger
         if (petTypes !== 0) {
         const subset = filteredUserPics.filter(p => p.pettypeId === petTypes)
         setFilteredPets(subset)
@@ -31,7 +30,7 @@ export default ({petTypes}) => {
                         
                         const use = users.find(u => u.id === pic.pet.userId)
                         
-                        return <MainFeedPet key={pic.id} petpic={pic} />
+                        return <MainFeedPet key={pic.id} user={use} petpic={pic} />
                     })
                 }
             </div>
