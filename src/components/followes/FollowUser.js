@@ -1,71 +1,44 @@
-export default props => {
-    const { addPet } = useContext(PetContext)
-    const { petTypes } = useContext(PetTypeContext)
-    const name = useRef()
-    const petType = useRef()
+import React, { useContext, useRef, useState } from "react"
+import { FollowerContext } from "./FollowerProvider"
+
+
+
+export const FollowUserForm = (selectedUser, toggle) => {
+    const { followUser } = useContext(FollowerContext)
     const currentUserId = localStorage.getItem('pets_please_user')
 
-    const constructNewPet = () => {
-        const petTypeId = parseInt(petType.current.value)
-        if (petTypeId === 0) {
-            window.alert("Please select a pet type")
-        } else {
-            followUser({
-                name: name.current.value,
-                pettypeId: petTypeId,
-                userId: parseInt(currentUserId)
-            })
-                .then(props.toggler)
-        }
+    const constructNewRelationship = () => {
+        followUser({
+            followedUserId: selectedUser.id,
+            userId: parseInt(currentUserId)
+        })
+        .then(toggle)
     }
 
-    return (
-        <form className="addPetForm">
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="petName">Pet name: </label>
-                    <input
-                        type="text"
-                        id="petName"
-                        ref={name}
-                        required
-                        autoFocus
-                        className="form-control"
-                        placeholder="Pet name"
-                    />
-                </div>
-            </fieldset>
+return (
+    <form className="addPetForm">
 
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="location">Pet type: </label>
-                    <select
-                        defaultValue=""
-                        name="petType"
-                        ref={petType}
-                        id="petType"
-                        className="form-control"
-                    >
-                        <option value="0">Select an animal</option>
-                        {petTypes.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
-
-            <button type="submit"
-                onClick={
-                    evt => {
-                        evt.preventDefault() // Prevent browser from submitting the form
-                        constructNewPet()
-                    }
+        <button type="submit"
+            onClick={
+                evt => {
+                    evt.preventDefault() // Prevent browser from submitting the form
+                    constructNewRelationship()
                 }
-                className="btn btn-primary">
-                Save Pet
+            }
+            className="btn btn-primary">
+            Yes
+            </button>
+            <button type="submit"
+            onClick={
+                evt => {
+                    evt.preventDefault() // Prevent browser from submitting the form
+                    toggle()
+                }
+                
+            }
+            className="btn btn-primary">
+            No
             </button>
         </form>
-    )
+)
 }

@@ -11,38 +11,34 @@ import { FollowerProvider } from "./followes/FollowerProvider"
 import { SearchBar } from "./followes/UserSearch"
 import { SearchResults } from "./followes/SearchResults"
 
-
 export default () => {
     const [searchTerms, setTerms] = useState(null)
-    
-    return(
+
+    return (
         <section className="mainContainer">
-        <FollowerProvider>
-            <PetProvider>
+            <FollowerProvider>
+                <PetProvider>
+                    <PetPicProvider>
+                        <PetTypeProvider>
+                            <UserProvider>
+                                <div className="myPetsContainer">
+                                    <MyPetList />
+                                </div>
+                                <div className="mainFeedContainer">
 
-                <PetPicProvider>
-                    <PetTypeProvider>
-                        <UserProvider>
-                            <div className="myPetsContainer">
-                                <MyPetList />
-                            </div>
-                            <div className="mainFeedContainer">
-
-                            </div>
-                            <div className="followersContainer">
+                                </div>
+                                <div className="followersContainer">
                                     <SearchBar setTerms={setTerms} />
                                     <SearchResults searchTerms={searchTerms} />
                                     <FollowerList />
-                                
-                            </div>
-                        </UserProvider>
-                    </PetTypeProvider>
-                </PetPicProvider>
 
-            </PetProvider>
-
-        </FollowerProvider>
+                                </div>
+                            </UserProvider>
+                        </PetTypeProvider>
+                    </PetPicProvider>
+                </PetProvider>
+            </FollowerProvider>
         </section>
     )
-    
+
 }

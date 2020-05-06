@@ -1,11 +1,10 @@
 import React, { useState, useContext, useEffect } from "react"
 import { Modal, ModalHeader, ModalBody, Button, ModalFooter } from "reactstrap"
 import { UserContext } from "../profiles/UserProvider"
+import { FollowUserForm } from "./FollowUser"
 
 export const SearchResults = ({ searchTerms }) => {
-    const { users, UnFollowUser } = useContext(UserContext)
-    // const { customers } = useContext(CustomerContext)
-    // const { locations } = useContext(LocationContext)
+    const { users } = useContext(UserContext)
 
     const [filteredUsers, setFiltered] = useState([])
 
@@ -21,25 +20,25 @@ export const SearchResults = ({ searchTerms }) => {
 
     useEffect(() => {
         if (searchTerms !== "") {
-            const subset = users.filter(user => user.username.toLowerCase().includes(searchTerms) && user.id !== parseInt(currentUserId))
+            const subset = users.filter(user => user.username.toLowerCase().includes(searchTerms) 
+            && user.id !== parseInt(currentUserId) )
             setFiltered(subset)
         } else {
             setFiltered([])
         }
     }, [searchTerms, users])
 
+
     return (
         <div className="searchResults">
-            <h3>Results</h3>
-            <div className="animals">
+            <p>Results</p>
+            <div className="divLine"></div>
+            <div className="usersToFollow">
                 {
                     filteredUsers.map(user => <div
-                        className="fakeLink href"
+                        className="individualUser fakeLink href"
                         onClick={() => {
-                            // const location = locations.find(l => l.id === user.locationId)
-                            // const customer = customers.find(c => c.id === user.customerId)
-
-                            setUser({ user })
+                            setUser(user)
                             toggle()
                         }}
                     >{user.username}</div>)
@@ -50,11 +49,13 @@ export const SearchResults = ({ searchTerms }) => {
                 <ModalHeader toggle={toggle}>
                     {selectedUser.username}
                 </ModalHeader>
+
                 <ModalBody>
-                    Follow User?
-                    <Button onClick={toggle} outline color="primary">Yes</Button>
-                    <Button onClick={toggle} outline color="danger">No</Button>
+                    Follow {selectedUser.username}?
                 </ModalBody>
+
+                <FollowUserForm key={selectedUser.id} toggle={toggle} {...selectedUser}/>
+
             </Modal>
 
         </div>

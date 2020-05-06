@@ -1,9 +1,27 @@
-/* .usersFollowedContainer{
-    display: flex;
-} */
-
 .individualFollowedUser{
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
 }
+
+.usersToFollow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.individualUser {
+    margin: 0.3rem
+}
+
+.fakeLink {
+    background: none!important;
+    border: none;
+    font-family: arial, sans-serif;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .href {
+    color: #479cf7d3;
+    text-decoration: underline;
+  }
