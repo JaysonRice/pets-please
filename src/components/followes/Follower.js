@@ -3,7 +3,7 @@ import { Button } from "reactstrap"
 import { FollowerContext } from "./FollowerProvider"
 
 export default ({ user }) => {
-    const { deleteFollower } = useContext(FollowerContext)
+    const { unFollowerUser } = useContext(FollowerContext)
 
     return (
             <>
@@ -12,7 +12,7 @@ export default ({ user }) => {
                     <p>{user.username}</p>
 
                 <Button size="sm" outline color="danger" onClick={() => {
-                    deleteFollower(user.id)
+                    unFollowerUser(user.id)
                 }}>x</Button>
             </section>
     </>

@@ -11,7 +11,7 @@ export const FollowerProvider = (props) => {
             .then(setFollowers)
     }
 
-    const addFollower = follower => {
+    const followUser = follower => {
         return fetch("http://localhost:8088/followers", {
             method: "POST",
             headers: {
@@ -37,7 +37,7 @@ export const FollowerProvider = (props) => {
         <FollowerContext.Provider value={
             {
                 usersFollowed,
-                addFollower,
+                followUser,
                 unFollowerUser
             }
         }>

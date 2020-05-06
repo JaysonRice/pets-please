@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import "./Layout.css"
 import "./PetsPlease.css"
 import MyPetList from "./myPets/MyPetList"
@@ -8,12 +8,16 @@ import { PetTypeProvider } from "./petFeed/PetTypeProvider"
 import { PetPicProvider } from "./profiles/PetPictureProvider"
 import { UserProvider } from "./profiles/UserProvider"
 import { FollowerProvider } from "./followes/FollowerProvider"
+import { SearchBar } from "./followes/UserSearch"
+import { SearchResults } from "./followes/SearchResults"
 
 
-export default () => (
-    <>
-    <FollowerProvider>
+export default () => {
+    const [searchTerms, setTerms] = useState(null)
+    
+    return(
         <section className="mainContainer">
+        <FollowerProvider>
             <PetProvider>
 
                 <PetPicProvider>
@@ -26,7 +30,8 @@ export default () => (
 
                             </div>
                             <div className="followersContainer">
-                                
+                                    <SearchBar setTerms={setTerms} />
+                                    <SearchResults searchTerms={searchTerms} />
                                     <FollowerList />
                                 
                             </div>
@@ -36,7 +41,8 @@ export default () => (
 
             </PetProvider>
 
-        </section>
         </FollowerProvider>
-    </>
-)
+        </section>
+    )
+    
+}
