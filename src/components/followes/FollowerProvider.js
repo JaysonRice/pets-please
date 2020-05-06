@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 export const FollowerContext = React.createContext()
 
 export const FollowerProvider = (props) => {
-    const [followers, setFollowers] = useState([])
+    const [usersFollowed, setFollowers] = useState([])
 
     const getFollowers = () => {
         return fetch("http://localhost:8088/followers?_expand=user")
@@ -22,7 +22,7 @@ export const FollowerProvider = (props) => {
             .then(getFollowers)
     }
 
-    const deleteFollower = followerId => {
+    const unFollowerUser = followerId => {
         return fetch(`http://localhost:8088/followers/${followerId}`, {
             method: "DELETE"
         })
@@ -36,9 +36,9 @@ export const FollowerProvider = (props) => {
     return (
         <FollowerContext.Provider value={
             {
-                followers,
+                usersFollowed,
                 addFollower,
-                deleteFollower
+                unFollowerUser
             }
         }>
             {props.children}

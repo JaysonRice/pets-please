@@ -1,0 +1,9 @@
+/* .usersFollowedContainer{
+    display: flex;
+} */
+
+.individualFollowedUser{
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
