@@ -3,18 +3,22 @@ import { Button } from "reactstrap"
 import { FollowerContext } from "./FollowerProvider"
 
 export default ({ user }) => {
-    const { unFollowerUser } = useContext(FollowerContext)
+    const { usersFollowed, unFollowerUser } = useContext(FollowerContext)
+
+    const selectedUser = usersFollowed.find(follower => {
+        return user.id === follower.followedUserId
+    })
 
     return (
-            <>
-        <section className="individualFollowedUser">
+        <>
+            <section className="individualFollowedUser">
 
-                    <p>{user.username}</p>
+                <p>{user.username}</p>
 
                 <Button size="sm" outline color="danger" onClick={() => {
-                    unFollowerUser(user.id)
+                    unFollowerUser(selectedUser.id)
                 }}>x</Button>
             </section>
-    </>
+        </>
     );
 };

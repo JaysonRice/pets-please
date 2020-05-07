@@ -11,9 +11,9 @@ export default () => {
     const {users} = useContext(UserContext)
 
     const currentUserId = localStorage.getItem('pets_please_user')
+    // Get followerIds of everybody you follow
     const filteredFollowed = usersFollowed.filter(followedUser => followedUser.userId === parseInt(currentUserId));
-
-
+    // Take those Ids and use them to find the objects of the people you follow
     const everyoneYouFollow = filteredFollowed.map(follower => {
         return users.find( user=> user.id === follower.followedUserId)
             })
