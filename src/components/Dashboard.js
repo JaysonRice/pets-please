@@ -29,7 +29,7 @@ export default () => {
                                 </div>
                                 <div className="followersContainer">
                                     <SearchBar setTerms={setTerms} />
-                                    <SearchResults searchTerms={searchTerms} />
+                                    <SearchResults searchTerms={searchTerms} setTerms={setTerms} />
                                     <FollowerList />
 
                                 </div>
