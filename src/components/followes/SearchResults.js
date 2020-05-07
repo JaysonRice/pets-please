@@ -31,7 +31,6 @@ export const SearchResults = ({ searchTerms }) => {
 
     return (
         <div className="searchResults">
-            <p>Results</p>
             <div className="divLine"></div>
             <div className="usersToFollow">
                 {
@@ -43,6 +42,7 @@ export const SearchResults = ({ searchTerms }) => {
                         }}
                     >{user.username}</div>)
                 }
+                  
             </div>
 
             <Modal isOpen={modal} toggle={toggle}>
@@ -54,7 +54,7 @@ export const SearchResults = ({ searchTerms }) => {
                     Follow {selectedUser.username}?
                 </ModalBody>
 
-                <FollowUserForm key={selectedUser.id} toggle={toggle} {...selectedUser}/>
+                <FollowUserForm key={selectedUser.id} toggleFollower={toggle} {...selectedUser}/>
 
             </Modal>
 

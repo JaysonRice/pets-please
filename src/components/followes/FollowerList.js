@@ -23,7 +23,7 @@ export default () => {
             
 
             <div className="usersFollowedContainer">
-            <h3>Following</h3>
+            <h5>Following</h5>
                 {
                     everyoneYouFollow.map(user => {
 

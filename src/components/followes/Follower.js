@@ -13,7 +13,7 @@ export default ({ user }) => {
         <>
             <section className="individualFollowedUser">
 
-                <p>{user.username}</p>
+                <p className="followedUserName">{user.username}</p>
 
                 <Button size="sm" outline color="danger" onClick={() => {
                     unFollowerUser(selectedUser.id)

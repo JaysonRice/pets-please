@@ -1,9 +1,8 @@
-import React, { useContext, useRef, useState } from "react"
+import React, { useContext } from "react"
 import { FollowerContext } from "./FollowerProvider"
+import { Button } from "reactstrap"
 
-
-
-export const FollowUserForm = (selectedUser, toggle) => {
+export const FollowUserForm = (selectedUser, toggleFollower) => {
     const { followUser } = useContext(FollowerContext)
     const currentUserId = localStorage.getItem('pets_please_user')
 
@@ -12,33 +11,32 @@ export const FollowUserForm = (selectedUser, toggle) => {
             followedUserId: selectedUser.id,
             userId: parseInt(currentUserId)
         })
-        .then(toggle)
+        .then(toggleFollower)
     }
 
 return (
-    <form className="addPetForm">
+    <form className="followUserForm">
 
-        <button type="submit"
+        <Button type="submit"
             onClick={
                 evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
                     constructNewRelationship()
                 }
             }
-            className="btn btn-primary">
+            outline block className="followUserButton" color="primary">
             Yes
-            </button>
-            <button type="submit"
+            </Button>
+            <Button type="submit"
             onClick={
                 evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
-                    toggle()
                 }
                 
             }
-            className="btn btn-primary">
+            outline block className="followUserButton" color="danger">
             No
-            </button>
+            </Button>
         </form>
 )
 }
