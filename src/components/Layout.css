@@ -20,6 +20,7 @@
 .followersContainer {
     display: flex;
     flex-basis: 20%;
+    flex-direction: column;
     padding: 2rem;
     margin: 0.5rem
 }

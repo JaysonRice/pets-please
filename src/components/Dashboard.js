@@ -1,26 +1,44 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "./Layout.css"
 import "./PetsPlease.css"
 import MyPetList from "./myPets/MyPetList"
+import FollowerList from "./followes/FollowerList"
 import { PetProvider } from "./petFeed/PetProvider"
 import { PetTypeProvider } from "./petFeed/PetTypeProvider"
+import { PetPicProvider } from "./profiles/PetPictureProvider"
+import { UserProvider } from "./profiles/UserProvider"
+import { FollowerProvider } from "./followes/FollowerProvider"
+import { SearchBar } from "./followes/UserSearch"
+import { SearchResults } from "./followes/SearchResults"
 
-export default () => (
-    <>
+export default () => {
+    const [searchTerms, setTerms] = useState(null)
+
+    return (
         <section className="mainContainer">
-            <div className="myPetsContainer">
+            <FollowerProvider>
                 <PetProvider>
-                    <PetTypeProvider>
-                        <MyPetList />
-                    </PetTypeProvider>
+                    <PetPicProvider>
+                        <PetTypeProvider>
+                            <UserProvider>
+                                <div className="myPetsContainer">
+                                    <MyPetList />
+                                </div>
+                                <div className="mainFeedContainer">
+
+                                </div>
+                                <div className="followersContainer">
+                                    <SearchBar setTerms={setTerms} />
+                                    <SearchResults searchTerms={searchTerms} setTerms={setTerms} />
+                                    <FollowerList />
+
+                                </div>
+                            </UserProvider>
+                        </PetTypeProvider>
+                    </PetPicProvider>
                 </PetProvider>
-            </div>
-            <div className="mainFeedContainer">
-                <h1>pet feed</h1>
-            </div>
-            <div className="followersContainer">
-                <h1>followers</h1>
-            </div>
+            </FollowerProvider>
         </section>
-    </>
-)
+    )
+
+}
