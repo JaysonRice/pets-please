@@ -41,23 +41,16 @@ export default () => {
     const currentUserId = localStorage.getItem('pets_please_user')
     const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
 
-    const currentUserInfo = users.find(user => user.id === parseInt(currentUserId))
+    const currentUserInfo = users.find(user => user.id === parseInt(currentUserId)) || {}
 debugger
     // Get follower Ids
-    const followers = currentUserInfo.followers
+    // const followers = currentUserInfo.followers
     // Get everyone you follow as an object
-    const everyoneYouFollow = followers.filter(follower => follower.followingId === users.id)
+    // const everyoneYouFollow = followers.filter(follower => follower.followingId === users.id)
     // Filter all pictures by userId that you follow
-    const filteredFollowingPics = petPics.filter(userPic => userPic.pet.userId === everyoneYouFollow.id)
+    // const filteredFollowingPics = petPics.filter(userPic => userPic.pet.userId === everyoneYouFollow.id)
 
-
-    const userAndFollowedPics = [] 
-    bothPics.push(filteredFollowingPics)
-    bothPics.push(filteredUserPics)
-
-    const [renderedPetPics, setRenderedPetPics] = useState([])
-
-    setRenderedPetPics(userAndFollowedPics)
+    // const [renderedPetPics, setRenderedPetPics] = useState([])
     
 
 
@@ -85,7 +78,7 @@ debugger
         <>
             <div className="petPics">
                 {
-                    renderedPetPics.map(pic => {
+                    filteredUserPics.map(pic => {
 
                         const use = users.find(u => u.id === pic.pet.userId)
 
