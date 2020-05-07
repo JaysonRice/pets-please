@@ -13,7 +13,7 @@ export const PetPicProvider = (props) => {
     }
 
     const addPetPic = petPic => {
-        return fetch("http://localhost:8088/petpics?_expand=pet", {
+        return fetch("http://localhost:8088/petpics", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
