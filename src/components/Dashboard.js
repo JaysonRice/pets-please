@@ -1,35 +1,47 @@
-import React from "react"
+import React, { useState } from "react"
 import "./Layout.css"
 import "./PetsPlease.css"
-import MyPetList from "./myPets/MyPetList"
 import MainFeedPetList from "./petFeed/MainFeedPetList"
+import MyPetList from "./myPets/MyPetList"
+import FollowerList from "./followes/FollowerList"
 import { PetProvider } from "./petFeed/PetProvider"
 import { PetTypeProvider } from "./petFeed/PetTypeProvider"
 import { PetPicProvider } from "./profiles/PetPictureProvider"
 import { UserProvider } from "./profiles/UserProvider"
 import { FilterByType } from "./petFeed/FilterPetFeed"
+import { FollowerProvider } from "./followes/FollowerProvider"
+import { SearchBar } from "./followes/UserSearch"
+import { SearchResults } from "./followes/SearchResults"
 
-export default () => (
-    <>
+export default () => {
+    const [searchTerms, setTerms] = useState(null)
+
+    return (
         <section className="mainContainer">
-            <PetProvider>
-                <PetPicProvider>
-                    <PetTypeProvider>
-                        <UserProvider>
-                            <div className="myPetsContainer">
-                                <MyPetList />
-                            </div>
-                            <div className="mainFeedContainer">
-                                <MainFeedPetList />
-                            </div>
-                            <div className="followersContainer">
-                                <h1>followers</h1>
-                            </div>
-                        </UserProvider>
-                    </PetTypeProvider>
-                </PetPicProvider>
-            </PetProvider>
 
+            <FollowerProvider>
+                <PetProvider>
+                    <PetPicProvider>
+                        <PetTypeProvider>
+                            <UserProvider>
+                                <div className="myPetsContainer">
+                                    <MyPetList />
+                                </div>
+                                <div className="mainFeedContainer">
+                                <MainFeedPetList />
+                                </div>
+                                <div className="followersContainer">
+                                    <SearchBar setTerms={setTerms} />
+                                    <SearchResults searchTerms={searchTerms} setTerms={setTerms} />
+                                    <FollowerList />
+
+                                </div>
+                            </UserProvider>
+                        </PetTypeProvider>
+                    </PetPicProvider>
+                </PetProvider>
+            </FollowerProvider>
         </section>
-    </>
-)
+    )
+
+}
