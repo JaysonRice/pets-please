@@ -15,6 +15,7 @@ import { SearchResults } from "./followes/SearchResults"
 
 export default () => {
     const [searchTerms, setTerms] = useState(null)
+    const [petType, setPetType] = useState("0")
 
     return (
         <section className="mainContainer">
@@ -28,7 +29,8 @@ export default () => {
                                     <MyPetList />
                                 </div>
                                 <div className="mainFeedContainer">
-                                <MainFeedPetList />
+                                <FilterByType setPetType={setPetType}/>
+                                <MainFeedPetList  petType={petType} />
                                 </div>
                                 <div className="followersContainer">
                                     <SearchBar setTerms={setTerms} />

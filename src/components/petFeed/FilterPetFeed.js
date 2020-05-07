@@ -1,22 +1,20 @@
 import React, { useContext, useRef } from 'react'
 import { PetTypeContext } from "./PetTypeProvider"
-import { PetPicContext } from '../profiles/PetPictureProvider'
+// import { PetPicContext } from '../profiles/PetPictureProvider'
 
-export const FilterByType = (setTerms) => {
-
+export const FilterByType = ({ setPetType }) => {
+    
     const { petTypes } = useContext(PetTypeContext)
-    const petType = useRef()
-    const { setFilterTerm } = useContext(PetPicContext)
 
     return (
         <div className="filterPetTypes">
-            <label htmlFor="petTypes">Filter By Type: </label>
-            <select defaultValue=""
-                name="petType"
-                ref={petType}
+            <label htmlFor="petTypes">Filter:</label>
+            <select onChange={e => setPetType(e.target.value)}
+                defaultValue=""
                 id="petType"
-                onChange={e => setFilterTerm(parseInt(e.current.value))}
-                className="form-control">
+                className="form-control"
+                required
+            >
                 <option value="0">All Pets</option>
                 {petTypes.map(e => (
                     <option key={e.id} value={e.id}>

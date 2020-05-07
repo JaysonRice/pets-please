@@ -4,11 +4,12 @@ import "./MainFeedPetList.css"
 import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 
-export default () => {
+export default ({petType}) => {
 
     const { petPics } = useContext(PetPicContext)
     const { users } = useContext(UserContext)
-
+    
+    const [renderedPetPics, setRenderedPetPics] = useState([])
     //     const [currentlyLoggedUser, setCurrentlyLoggedUser] = useState({
     //     id: 0,
     //     name: "defaultUser",
@@ -38,11 +39,7 @@ export default () => {
 
 
     // // Show only the user's pets in the pet feed
-    const currentUserId = localStorage.getItem('pets_please_user')
-    const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
-
-    const currentUserInfo = users.find(user => user.id === parseInt(currentUserId)) || {}
-debugger
+    
     // Get follower Ids
     // const followers = currentUserInfo.followers
     // Get everyone you follow as an object
@@ -50,7 +47,7 @@ debugger
     // Filter all pictures by userId that you follow
     // const filteredFollowingPics = petPics.filter(userPic => userPic.pet.userId === everyoneYouFollow.id)
 
-    // const [renderedPetPics, setRenderedPetPics] = useState([])
+    
     
 
 
@@ -73,12 +70,36 @@ debugger
     // }
 
     // },[currentlyLoggedUser])
+    const currentUserId = localStorage.getItem('pets_please_user')
+    const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
+    const currentUserInfo = users.find(user => user.id === parseInt(currentUserId)) || {}
+
+    useEffect(
+        () => {
+            
+            let filteredPets = []
+
+            const currentUserId = localStorage.getItem('pets_please_user')
+            const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
+
+            if (petType === "0") {
+                filteredPets =filteredUserPics
+
+            } else if (petType !== "0") {
+                filteredPets = filteredUserPics.filter(userPic => userPic.pet.pettypeId === parseInt(petType))
+            }
+
+            setRenderedPetPics(filteredPets)
+
+     },
+        [petType, petPics]
+    )
 
     return (
         <>
             <div className="petPics">
                 {
-                    filteredUserPics.map(pic => {
+                    renderedPetPics.map(pic => {
 
                         const use = users.find(u => u.id === pic.pet.userId)
 
