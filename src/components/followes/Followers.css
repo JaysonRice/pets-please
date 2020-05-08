@@ -3,11 +3,18 @@
     justify-content: flex-end;
     align-items: baseline;
 }
-
+/* Search results container */
 .usersToFollow{
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
 }
+
+.individualUser {
+  margin:0.3rem ;
+}
+
 /* List of users that you follow */
 .usersFollowedContainer{
     display: flex;
@@ -15,9 +22,9 @@
     border: 1px solid #FF5112;
     border-radius: 0.2rem;
     box-shadow: 0px 2px 10px -10px black;
-    padding: 1rem;
-    background: white;
-}
+    background-color: white;
+  }
+
 /* Individual usernames you follow */
 .followedUserName{
     margin-right: 1rem;
@@ -49,3 +56,5 @@
 .followUserButton{
       margin: 0rem 2rem;
   }
+
+
