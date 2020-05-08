@@ -24,11 +24,12 @@ const toggleEdit = () => setEditModal(!editModal)
                 <CardBody className="petCardBody">
                     <div className="petCardMain">
                     <h4>{pet.name}</h4>
-                    <Button onClick={toggleEdit} outline color="primary">Edit</Button>
-                    <Button onClick={toggleAdd} outline color="primary">+</Button>
+                    <p>{pet.pettype.name}</p>
                     </div>
-                    <CardSubtitle>{pet.pettype.name}</CardSubtitle>
-                    
+                    <div className="petCardSecondary">
+                    <Button onClick={toggleEdit} color="primary">Edit</Button>
+                    <Button onClick={toggleAdd} outline color="primary">Add Picture</Button>
+                    </div>
                 </CardBody>
             </Card>
         </div>

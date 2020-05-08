@@ -26,15 +26,15 @@ export const EditPetForm = ({ pet, toggleEdit }) => {
     }
 
     const updatePet = () => {
-        const petTypeId = parseInt(updatedPet.petTypeId)
+        const newPetTypeId = parseInt(updatedPet.petTypeId)
         
-        if (petTypeId === 0) {
+        if (newPetTypeId === 0) {
             window.alert("Please select a pet type")
         } else {
             editPet({
                 id: updatedPet.id,
                 name: updatedPet.name,
-                pettypeId: updatedPet.petTypeId,
+                pettypeId: newPetTypeId,
                 userId: parseInt(localStorage.getItem("pets_please_user"))
             })
                 .then(toggleEdit)

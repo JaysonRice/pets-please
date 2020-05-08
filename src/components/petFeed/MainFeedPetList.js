@@ -4,11 +4,13 @@ import "./MainFeedPetList.css"
 import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 import { FollowerContext } from "../followes/FollowerProvider"
+import { PetContext } from "./PetProvider"
 
 export default ({ petType }) => {
 
     const { petPics } = useContext(PetPicContext)
     const { usersFollowed } = useContext(FollowerContext)
+    const { pets } = useContext(PetContext)
     const { users } = useContext(UserContext)
     const [renderedPetPics, setRenderedPetPics] = useState([])
 
@@ -73,7 +75,7 @@ export default ({ petType }) => {
             setRenderedPetPics(filteredPets)
 
         },
-        [petType, petPics, users, usersFollowed]
+        [petType, petPics, pets, users, usersFollowed]
     )
 
     return (
