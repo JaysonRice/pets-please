@@ -27,6 +27,7 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
 
     const updatePet = () => {
         const petTypeId = parseInt(updatedPet.petTypeId)
+        
         if (petTypeId === 0) {
             window.alert("Please select a pet type")
         } else {

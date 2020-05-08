@@ -1,0 +1,21 @@
+.postedBy{
+color: rgb(170, 170, 170);
+}
+
+.petPics {
+    overflow-y: scroll;
+    margin-top: 1rem;
+    min-height: 25rem;
+    max-height: 30rem;
+    box-shadow: 0px 2px 10px -10px black;
+}
+
+.mainFeedFilterContainer{
+    display: flex;
+    flex-basis: 30%;
+}
+
+.mainFeedTopItem{
+    justify-content: flex-end;
+    margin: 0 auto;
+}

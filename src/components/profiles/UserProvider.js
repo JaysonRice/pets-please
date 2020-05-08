@@ -6,7 +6,7 @@ export const UserProvider = (props) => {
     const [users, setUsers] = useState([])
 
     const getUsers = () => {
-        return fetch("http://localhost:8088/users")
+        return fetch("http://localhost:8088/users?_embed=followers&_embed=pets")
             .then(res => res.json())
             .then(setUsers)
     }
@@ -22,10 +22,6 @@ export const UserProvider = (props) => {
             .then(getUsers)
     }
 
-    /*
-        Load all animals when the component is mounted. Ensure that
-        an empty array is the second argument to avoid infinite loop.
-    */
     useEffect(() => {
         getUsers()
     }, [])

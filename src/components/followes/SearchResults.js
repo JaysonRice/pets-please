@@ -21,10 +21,6 @@ export const SearchResults = ({ searchTerms, setTerms }) => {
     const currentUserId = localStorage.getItem('pets_please_user')
     const filteredFollowed = usersFollowed.filter(followedUser => followedUser.userId === parseInt(currentUserId));
     
-    const everyoneYouFollow = filteredFollowed.map(follower => {
-        return users.find( user=> user.id === follower.followedUserId)
-            })
-
     useEffect(() => {
         if (searchTerms !== "") {
             const subset = users.filter(user => user.username.toLowerCase().includes(searchTerms) 
