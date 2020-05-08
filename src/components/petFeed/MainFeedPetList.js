@@ -47,7 +47,19 @@ export default ({ petType }) => {
 
             const filteredUserPics = petPics.filter(userPic => userPic.pet.userId === parseInt(currentUserId));
             // Combine user pictures and pictures from users you follow
-            let allPetPictures = [...friendPetPics, ...filteredUserPics]
+            let allPetPictures = [...friendPetPics, ...filteredUserPics].sort((Beginning, End) => {
+                let dateA = Beginning.timestamp
+                let dateB = End.timestamp
+                if (dateA < dateB) {
+                    return 1
+                }
+                if (dateA > dateB) {
+                    return -1
+                }
+                return 0
+            }
+            )
+
             // State logic for rendering photos after using the filter
             let filteredPets = []
 
