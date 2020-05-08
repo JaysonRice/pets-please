@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react"
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import React, { useContext } from "react"
 import { FollowerContext } from "./FollowerProvider"
 import Follower from "./Follower"
 import { UserContext } from "../profiles/UserProvider"

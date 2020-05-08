@@ -6,7 +6,7 @@ import { Button } from 'reactstrap';
 export const EditPetForm = ({ pet, user, toggleEdit }) => {
     const { petTypes } = useContext(PetTypeContext)
     const { editPet } = useContext(PetContext)
-
+    const { deletePet } = useContext(PetContext) 
     // Separate state variable to track the Pet as it is edited
     const [updatedPet, setPet] = useState(pet)
 
@@ -34,7 +34,7 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
             editPet({
                 id: updatedPet.id,
                 name: updatedPet.name,
-                pettypeId: petTypeId,
+                pettypeId: updatedPet.petTypeId,
                 userId: parseInt(localStorage.getItem("pets_please_user"))
             })
                 .then(toggleEdit)
@@ -70,21 +70,20 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
                     </select>
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="user">User:</label>
-                    <input type="text" name="user" disabled className="form-control"
-                        defaultValue={user.name}
-                    />
-                </div>
-            </fieldset>
-            <Button outline color="primary" type="submit" 
+
+            <div className="editPetButtonContainer">
+            <Button className="editPetButton" outline color="primary" type="submit" 
                 onClick={evt => {
                     evt.preventDefault()
                     updatePet()
                 }}>
                 Save Updates
             </Button>
+            <Button className="editPetButton" outline color="danger" onClick={() => {
+                        deletePet(pet.id)
+                        toggleEdit()
+                    }}>Delete Pet</Button>
+                    </div>
         </form>
     )
 }
