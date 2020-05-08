@@ -6,11 +6,12 @@ import {
 } from 'reactstrap';
 import "./MyPet.css"
 import { EditPetForm } from "./EditPetForm";
+import CloudinaryUpload from "./AddPetUpload";
 
 export default ({ pet }) => {   
-// Toggle details modal
-const [modal, setModal] = useState(false)
-const toggle = () => setModal(!modal)
+// Toggle adding picture modal
+const [picModal, setPicModal] = useState(false)
+const toggleAdd = () => setPicModal(!picModal)
 
 // Toggle edit modal
 const [editModal, setEditModal] = useState(false)
@@ -24,9 +25,10 @@ const toggleEdit = () => setEditModal(!editModal)
                     <div className="petCardMain">
                     <h4>{pet.name}</h4>
                     <Button onClick={toggleEdit} outline color="primary">Edit</Button>
+                    <Button onClick={toggleAdd} outline color="primary">+</Button>
                     </div>
                     <CardSubtitle>{pet.pettype.name}</CardSubtitle>
-                    {/* <Button onClick={toggleEdit} outline color="primary">Edit</Button> */}
+                    
                 </CardBody>
             </Card>
         </div>
@@ -37,6 +39,16 @@ const toggleEdit = () => setEditModal(!editModal)
             </ModalHeader>
             <ModalBody>
                 <EditPetForm key={pet.id} toggleEdit={toggleEdit} pet={pet} {...pet} />
+
+            </ModalBody>
+        </Modal>
+
+        <Modal isOpen={picModal} toggle={toggleAdd}>
+            <ModalHeader toggle={toggleAdd}>
+                Upload Picture of {pet.name}
+            </ModalHeader>
+            <ModalBody>
+                <CloudinaryUpload key={pet.id} toggleAdd={toggleAdd} pet={pet} {...pet} />
 
             </ModalBody>
         </Modal>

@@ -3,7 +3,7 @@ import { PetContext } from "../petFeed/PetProvider"
 import { PetTypeContext } from "../petFeed/PetTypeProvider"
 import { Button } from 'reactstrap';
 
-export const EditPetForm = ({ pet, user, toggleEdit }) => {
+export const EditPetForm = ({ pet, toggleEdit }) => {
     const { petTypes } = useContext(PetTypeContext)
     const { editPet } = useContext(PetContext)
     const { deletePet } = useContext(PetContext) 
