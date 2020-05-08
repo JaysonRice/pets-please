@@ -25,14 +25,14 @@ export default () => {
                     <PetPicProvider>
                         <PetTypeProvider>
                             <UserProvider>
-                                <div className="myPetsContainer">
+                                <div className="myPetsContainer box">
                                     <MyPetList />
                                 </div>
-                                <div className="mainFeedContainer">
+                                <div className="mainFeedContainer box">
                                 <FilterByType setPetType={setPetType}/>
                                 <MainFeedPetList  petType={petType} />
                                 </div>
-                                <div className="followersContainer">
+                                <div className="followersContainer box">
                                     <SearchBar setTerms={setTerms} />
                                     <SearchResults searchTerms={searchTerms} setTerms={setTerms} />
                                     <FollowerList />

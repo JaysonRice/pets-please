@@ -20,10 +20,13 @@ const toggleEdit = () => setEditModal(!editModal)
         <>
         <div className="petCard">
             <Card style={{ width: '15rem', }}>
-                <CardBody>
+                <CardBody className="petCardBody">
+                    <div className="petCardMain">
                     <h4>{pet.name}</h4>
-                    <CardSubtitle>{pet.pettype.name}</CardSubtitle>
                     <Button onClick={toggleEdit} outline color="primary">Edit</Button>
+                    </div>
+                    <CardSubtitle>{pet.pettype.name}</CardSubtitle>
+                    {/* <Button onClick={toggleEdit} outline color="primary">Edit</Button> */}
                 </CardBody>
             </Card>
         </div>

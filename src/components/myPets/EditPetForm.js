@@ -70,14 +70,7 @@ export const EditPetForm = ({ pet, user, toggleEdit }) => {
                     </select>
                 </div>
             </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="user">User:</label>
-                    <input type="text" name="user" disabled className="form-control"
-                        defaultValue={user.name}
-                    />
-                </div>
-            </fieldset>
+
             <div className="editPetButtonContainer">
             <Button className="editPetButton" outline color="primary" type="submit" 
                 onClick={evt => {

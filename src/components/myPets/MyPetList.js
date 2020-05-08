@@ -30,13 +30,13 @@ export default () => {
         <>
             <div className="logoContainer">
 
-                <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/c_scale,w_200/v1588278178/RedCropped_xxl9bv.png" alt="" />
-                <Button size="sm">Logout</Button>
+                <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/c_scale,w_300/v1588278178/RedCropped_xxl9bv.png" alt="" />
+                
             </div>
 
-            <h5> {loggeduser.username}'s Pets</h5>
-
             <Button block outline color="danger">Gallery</Button>
+            <h3 className="myPetsUsername"> {loggeduser.username}'s Pets</h3>
+
             <div className="pets">
                 {
                     filteredUserPets.map(pet => {

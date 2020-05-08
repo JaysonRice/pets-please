@@ -4,6 +4,7 @@
 
 .logoContainer {
     display: flex;
+    text-align: center;
 }
 
 .editPetButtonContainer{
@@ -11,7 +12,17 @@
     justify-content: space-evenly;
     margin-bottom: 1rem;
   }
-
+/* Buttons within the edit form */
 .editPetButton{
       margin: 0rem 2rem;
   }
+
+/* Username right under the logo */
+.myPetsUsername{
+    margin-top: 1rem;
+  }
+/* Includes pet name and button within the pet card */
+.petCardMain{
+    display: flex;
+    justify-content: space-between;
+}
