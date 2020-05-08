@@ -26,3 +26,12 @@
     display: flex;
     justify-content: space-between;
 }
+
+.petCardSecondary{
+    display: flex;
+    padding: 1rem;
+    align-items: baseline;
+    border-radius: 0.2rem;
+    justify-content: space-between;
+    background-color: whitesmoke;
+}

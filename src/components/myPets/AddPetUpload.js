@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button } from 'reactstrap'
+import { PetPicContext } from '../profiles/PetPictureProvider'
 
-export const CloudinaryUpload = () =>{
+export const CloudinaryUpload = ({ pet, toggleAdd }) => {
   const [image, setImage] = useState('')
   const [loading, setLoading] = useState(false)
+
+  const { addPetPic } = useContext(PetPicContext)
 
   const uploadImage = async e => {
     const files = e.target.files
@@ -18,28 +21,36 @@ export const CloudinaryUpload = () =>{
         body: data
       }
     )
+
     const file = await res.json()
 
     setImage(file.secure_url)
+    
+      addPetPic({
+        url: file.secure_url,
+        likes: 0,
+        petId: pet.id,
+        timestamp: Date.now()
+      }).then(toggleAdd)
+
     setLoading(false)
   }
 
   return (
     <div className="App">
-      <h5>Upload Main Picture</h5>
       <input
         type="file"
         name="file"
         placeholder="Upload an image"
         onChange={uploadImage}
       />
-      { loading ? (
+      {loading ? (
         <h4>Loading...</h4>
       ) : (
-        <img src={image} style={{ width: '300px' }} />
-      )}
+          <img src={image} style={{ width: '300px' }} />
+        )}
     </div>
-    
+
   )
 }
 
