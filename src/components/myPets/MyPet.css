@@ -5,3 +5,13 @@
 .logoContainer {
     display: flex;
 }
+
+.editPetButtonContainer{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+  }
+
+.editPetButton{
+      margin: 0rem 2rem;
+  }

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react"
+import React, { useContext, useRef } from "react"
 import { PetContext } from "../petFeed/PetProvider"
 import { PetTypeContext } from "../petFeed/PetTypeProvider"
 

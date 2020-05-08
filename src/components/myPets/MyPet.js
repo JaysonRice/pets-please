@@ -1,16 +1,13 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState } from "react"
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Modal, 
-    ModalHeader, ModalBody, ModalFooter 
+    Card, CardBody,
+     CardSubtitle, Button, Modal, 
+    ModalHeader, ModalBody 
 } from 'reactstrap';
 import "./MyPet.css"
 import { EditPetForm } from "./EditPetForm";
-import { PetContext } from "../petFeed/PetProvider";
 
-export default ({ pet }) => {
-
-const { deletePet } = useContext(PetContext)    
+export default ({ pet }) => {   
 // Toggle details modal
 const [modal, setModal] = useState(false)
 const toggle = () => setModal(!modal)
@@ -37,10 +34,7 @@ const toggleEdit = () => setEditModal(!editModal)
             </ModalHeader>
             <ModalBody>
                 <EditPetForm key={pet.id} toggleEdit={toggleEdit} pet={pet} {...pet} />
-                <Button outline color="danger" onClick={() => {
-                        deletePet(pet.id)
-                        toggleEdit()
-                    }}>Delete Pet</Button>
+
             </ModalBody>
         </Modal>
         </>

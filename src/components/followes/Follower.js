@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import { Button } from "reactstrap"
 import { FollowerContext } from "./FollowerProvider"
 

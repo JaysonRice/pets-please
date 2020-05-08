@@ -1,6 +1,5 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext } from 'react'
 import { PetTypeContext } from "./PetTypeProvider"
-// import { PetPicContext } from '../profiles/PetPictureProvider'
 
 export const FilterByType = ({ setPetType }) => {
 
