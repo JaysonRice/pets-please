@@ -3,16 +3,16 @@ import { PetTypeContext } from "./PetTypeProvider"
 // import { PetPicContext } from '../profiles/PetPictureProvider'
 
 export const FilterByType = ({ setPetType }) => {
-    
+
     const { petTypes } = useContext(PetTypeContext)
 
     return (
-        <div className="filterPetTypes">
-            <label htmlFor="petTypes">Filter:</label>
+        <div className="mainFeedFilterContainer">
+            <label className="selectItself" htmlFor="petTypes"></label>
             <select onChange={e => setPetType(e.target.value)}
                 defaultValue=""
                 id="petType"
-                className="form-control"
+                className="form-control mainFeedTopItem"
                 required
             >
                 <option value="0">All Pets</option>
