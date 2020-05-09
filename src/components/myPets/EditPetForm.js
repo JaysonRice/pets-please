@@ -26,11 +26,8 @@ export const EditPetForm = ({ pet, toggleEdit }) => {
     }
 
     const updatePet = () => {
-        const newPetTypeId = parseInt(updatedPet.petTypeId)
+        const newPetTypeId = parseInt(updatedPet.pettypeId)
         
-        if (newPetTypeId === 0) {
-            window.alert("Please select a pet type")
-        } else {
             editPet({
                 id: updatedPet.id,
                 name: updatedPet.name,
@@ -38,7 +35,6 @@ export const EditPetForm = ({ pet, toggleEdit }) => {
                 userId: parseInt(localStorage.getItem("pets_please_user"))
             })
                 .then(toggleEdit)
-        }
     }
 
     return (
@@ -54,23 +50,6 @@ export const EditPetForm = ({ pet, toggleEdit }) => {
                 </div>
             </fieldset>
 
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="petTypeId">Pet Type: </label>
-                    <select name="petTypeId" className="form-control"
-                        defaultValue={pet.pettypeId}
-                        onChange={handleControlledInputChange}>
-
-                        <option value="0">Select a pet type</option>
-                        {petTypes.map(e => (
-                            <option key={e.id} value={e.id}>
-                                {e.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </fieldset>
-
             <div className="editPetButtonContainer">
             <Button className="editPetButton" outline color="primary" type="submit" 
                 onClick={evt => {
@@ -80,8 +59,7 @@ export const EditPetForm = ({ pet, toggleEdit }) => {
                 Save Updates
             </Button>
             <Button className="editPetButton" outline color="danger" onClick={() => {
-                        deletePet(pet.id)
-                        toggleEdit()
+                        deletePet(pet.id).then(toggleEdit)
                     }}>Delete Pet</Button>
                     </div>
         </form>
