@@ -78,6 +78,7 @@ export default ({ petType }) => {
         [petType, petPics, pets, users, usersFollowed]
     )
 
+    // Map over array of just your pics and pics of users you follow
     return (
         <>
             <div className="petPics">
