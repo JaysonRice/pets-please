@@ -11,11 +11,10 @@ export default ({ petpic }) => {
     return (
         <>
         <div className="galleryPetCard">
-            <Card style={{ width: '50%', }}>
+            <Card className="galleryCard" style={{ width: '90%', }}>
                 <CardImg top width="100%" src={petpic.url} alt="Card image cap" />
                 <CardBody>
-                    <h4>{petpic.pet.name}</h4>
-                    <CardSubtitle className="postedBy">Posted on {new Date (petpic.timestamp).toLocaleDateString()}</CardSubtitle>
+                    <CardSubtitle className="postedBy">{petpic.pet.name} - Posted on {new Date (petpic.timestamp).toLocaleDateString()}</CardSubtitle>
                     <Button className="editPetButton" outline color="danger" onClick={() => {
                         deletePetPic(petpic.id)
                     }}>Delete Picture</Button>

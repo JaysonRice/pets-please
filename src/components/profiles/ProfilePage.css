@@ -1,4 +1,21 @@
-.galleryPics{
+.galleryHeader{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 1rem;
+}
+
+.galleryPicContainer{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 1rem 0rem;
+}
+/* Pet pic card surrounding div */
+.galleryPetCard{
+    flex-basis: 30%;
+    margin-bottom: 1rem;
+}
+/* Pet pic card itself */
+.galleryCard{
+    text-align: center;
 }

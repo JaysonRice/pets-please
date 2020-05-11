@@ -46,9 +46,8 @@ export default () => {
     // setRenderedPetPics={setRenderedPetPics} renderedPetPics={renderedPetPics}
 
     const showGallery = () => (
-        <div>
-            <div className="fakeLink href" onClick={() => setActiveView("dashboard")}>Dashboard</div>
-            <GalleryList petName={petName}  setPetName={setPetName}  />
+        <div className="mainGalleryContainer">
+            <GalleryList setActiveView={setActiveView} petName={petName} setPetName={setPetName}  />
         </div>
     )
 
