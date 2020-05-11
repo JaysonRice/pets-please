@@ -13,7 +13,7 @@ import { FollowerProvider } from "./followes/FollowerProvider"
 import { SearchBar } from "./followes/UserSearch"
 import { SearchResults } from "./followes/SearchResults"
 
-export default () => {
+export default ({setActiveUser}) => {
     const [searchTerms, setTerms] = useState(null)
 
     const [activeView, setActiveView] = useState("dashboard")
@@ -22,19 +22,13 @@ export default () => {
     const [petType, setPetType] = useState("0")
     const [petName, setPetName] = useState("0")
 
-    // const allPetPics = useContext(PetPicContext)
-    const [renderedPetPics, setRenderedPetPics] = useState([])
-
-
     const showDashboard = () => (
-
-
         <div className="mainDashboardContainer">
             <div className="myPetsContainer box">
                 <MyPetList setActiveView={setActiveView} />
             </div>
             <div className="mainFeedContainer box">
-                <MainFeedPetList petType={petType} setPetType={setPetType}/>
+                <MainFeedPetList setActiveUser={setActiveUser} petType={petType} setPetType={setPetType}/>
             </div>
             <div className="followersContainer box">
                 <SearchBar setTerms={setTerms} />
@@ -43,7 +37,6 @@ export default () => {
             </div>
         </div>
     )
-    // setRenderedPetPics={setRenderedPetPics} renderedPetPics={renderedPetPics}
 
     const showGallery = () => (
         <div className="mainGalleryContainer">

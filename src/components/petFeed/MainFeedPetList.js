@@ -9,7 +9,7 @@ import "../Layout.css"
 import { FilterByType } from "./FilterPetFeed"
 import { Button } from "reactstrap"
 
-export default ({ petType, setPetType }) => {
+export default ({ petType, setPetType, setActiveUser }) => {
 
     const { petPics } = useContext(PetPicContext)
     const { usersFollowed } = useContext(FollowerContext)
@@ -89,7 +89,12 @@ export default ({ petType, setPetType }) => {
                 <FilterByType setPetType={setPetType} />
 
                 <div className="mainFeedTopItem">
-                    <Button size="sm">Logout</Button>
+
+                    <Button onClick={() => {
+                        setActiveUser(null)
+                        localStorage.setItem("pets_please_user", "")
+                    }}
+                        size="sm">Logout</Button>
                 </div>
             </div>
 
