@@ -5,7 +5,7 @@ import {
 import "./MainFeedPetList.css"
 
 export default ({ petpic, user }) => {
-    
+   
     return (
         <>
         <div className="petCard">

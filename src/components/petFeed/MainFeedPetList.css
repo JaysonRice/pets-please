@@ -1,25 +1,27 @@
 .postedBy{
-color: rgb(170, 170, 170);
+    color: rgb(170, 170, 170);
 }
+
 /* Pet pic container */
 .petPics {
     overflow-y: scroll;
     margin-top: 1rem;
-    height: 32rem;
+    height: 60rem;
     box-shadow: 0px 2px 10px -10px black;
 }
-
+    
 /* Main feed container */
 .mainFeedContainer{    
     padding-top: 0rem;
 }
-
+    
 /* Filter and logout div */
 .mainFeedFilterContainer{
     display: flex;
     flex-basis: 100%;
     justify-content: space-between;
 }
+
 /* Filter and logout seperately */
 .mainFeedTopItem{
     align-self: flex-end;
