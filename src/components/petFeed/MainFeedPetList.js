@@ -5,6 +5,7 @@ import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 import { FollowerContext } from "../followes/FollowerProvider"
 import { PetContext } from "./PetProvider"
+import "../Layout.css" 
 
 export default ({ petType }) => {
 
@@ -69,7 +70,7 @@ export default ({ petType }) => {
                 filteredPets = allPetPictures
 
             } else if (petType !== "0") {
-                debugger
+                
                 filteredPets = allPetPictures.filter(userPic => userPic.pet.pettypeId === parseInt(petType))
             }
 
@@ -81,6 +82,7 @@ export default ({ petType }) => {
 
     return (
         <>
+        <div className="mainDashboardContainer">
             <div className="petPics">
                 {
                     renderedPetPics.map(pic => {
@@ -90,6 +92,7 @@ export default ({ petType }) => {
                         return <MainFeedPet key={pic.id} user={use} petpic={pic} />
                     })
                 }
+            </div>
             </div>
         </>
     )

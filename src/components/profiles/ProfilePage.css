@@ -1,0 +1,4 @@
+.galleryPics{
+    display: flex;
+    flex-wrap: wrap;
+}

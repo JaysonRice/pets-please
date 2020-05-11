@@ -8,7 +8,7 @@ export default ({ petpic }) => {
     
     return (
         <>
-        <div className="petCard">
+        <div className="galleryPetCard">
             <Card style={{ width: '50%', }}>
                 <CardImg top width="100%" src={petpic.url} alt="Card image cap" />
                 <CardBody>

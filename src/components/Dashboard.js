@@ -20,49 +20,36 @@ export default () => {
 
     const [activeView, setActiveView] = useState("dashboard")
     const [components, setComponents] = useState()
-    
+
     const [petType, setPetType] = useState("0")
     const [petName, setPetName] = useState("0")
 
+
     const showDashboard = () => (
-        <FollowerProvider>
-            <PetProvider>
-                <PetPicProvider>
-                    <PetTypeProvider>
-                        <UserProvider>
-                            <div className="myPetsContainer box">
-                                <MyPetList setActiveView={setActiveView} />
-                            </div>
-                            <div className="mainFeedContainer box">
-                                <FilterByType setPetType={setPetType} />
-                                <MainFeedPetList petType={petType} />
-                            </div>
-                            <div className="followersContainer box">
-                                <SearchBar setTerms={setTerms} />
-                                <SearchResults searchTerms={searchTerms} setTerms={setTerms} />
-                                <FollowerList />
-                            </div>
-                        </UserProvider>
-                    </PetTypeProvider>
-                </PetPicProvider>
-            </PetProvider>
-        </FollowerProvider>
+
+
+        <div className="mainDashboardContainer">
+            <div className="myPetsContainer box">
+                <MyPetList setActiveView={setActiveView} />
+            </div>
+            <div className="mainFeedContainer box">
+                <FilterByType setPetType={setPetType} />
+                <MainFeedPetList petType={petType} />
+            </div>
+            <div className="followersContainer box">
+                <SearchBar setTerms={setTerms} />
+                <SearchResults searchTerms={searchTerms} setTerms={setTerms} />
+                <FollowerList />
+            </div>
+        </div>
     )
 
 
     const showGallery = () => (
         <div>
-            <PetProvider>
-                <PetPicProvider>
-                    <PetTypeProvider>
-                        <UserProvider>
-                            <div className="fakeLink href" onClick={() => setActiveView("dashboard")}>Dashboard</div>
-                            <FilterByName setPetName={setPetName} />
-                            <GalleryList petName={petName} activeView={activeView}/>
-                        </UserProvider>
-                    </PetTypeProvider>
-                </PetPicProvider>
-            </PetProvider>
+            <div className="fakeLink href" onClick={() => setActiveView("dashboard")}>Dashboard</div>
+            <FilterByName setPetName={setPetName} />
+            <GalleryList petName={petName} activeView={activeView} />
         </div>
     )
 
@@ -73,12 +60,22 @@ export default () => {
         else if (activeView === "gallery") {
             setComponents(showGallery)
         }
-    }, [activeView])
+    }, [activeView, petType, petName])
 
     return (
-        <section className="mainContainer">
-            {components}
-        </section>
+        <FollowerProvider>
+            <PetProvider>
+                <PetPicProvider>
+                    <PetTypeProvider>
+                        <UserProvider>
+                            <div className="mainContainer">
+                                {components}
+                            </div>
+                        </UserProvider>
+                    </PetTypeProvider>
+                </PetPicProvider>
+            </PetProvider>
+        </FollowerProvider>
     )
 
 }

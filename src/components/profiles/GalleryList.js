@@ -11,8 +11,6 @@ export default ({ petName, activeView }) => {
     const { pets } = useContext(PetContext)
     const [renderedPetPics, setRenderedPetPics] = useState([])
 
-    
-
     useEffect(
         () => {
             const currentUserId = localStorage.getItem('pets_please_user')
@@ -37,7 +35,7 @@ export default ({ petName, activeView }) => {
                 filteredPets = filteredUserPics
 
             } else if (petName !== "0") {
-                filteredPets = filteredUserPics.filter(userPic => userPic.pet.id === petName)
+                filteredPets = filteredUserPics.filter(userPic => userPic.pet.id === parseInt(petName))
             }
 
 
