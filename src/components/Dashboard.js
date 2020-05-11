@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./Layout.css"
 import "./PetsPlease.css"
 import MainFeedPetList from "./petFeed/MainFeedPetList"
@@ -17,20 +17,22 @@ export default () => {
     const [searchTerms, setTerms] = useState(null)
     const [petType, setPetType] = useState("0")
 
-    return (
-        <section className="mainContainer">
 
-            <FollowerProvider>
+    const [activeView, setActiveView] = useState("dashboard")
+    const [components, setComponents] = useState()
+
+    const showDashboard = () => (
+        <FollowerProvider>
                 <PetProvider>
                     <PetPicProvider>
                         <PetTypeProvider>
                             <UserProvider>
                                 <div className="myPetsContainer box">
-                                    <MyPetList />
+                                    <MyPetList setActiveView={setActiveView}/>
                                 </div>
                                 <div className="mainFeedContainer box">
-                                <FilterByType setPetType={setPetType}/>
-                                <MainFeedPetList  petType={petType} />
+                                    <FilterByType setPetType={setPetType} />
+                                    <MainFeedPetList petType={petType} />
                                 </div>
                                 <div className="followersContainer box">
                                     <SearchBar setTerms={setTerms} />
@@ -43,6 +45,28 @@ export default () => {
                     </PetPicProvider>
                 </PetProvider>
             </FollowerProvider>
+    )
+
+
+    const showGallery = () => (
+        <div>
+            <h1>gallery</h1>
+            <div className="fakeLink href" onClick={() => setActiveView("dashboard")}>Dashboard</div>
+        </div>
+    )
+
+    useEffect(() => {
+        if (activeView === "dashboard") {
+            setComponents(showDashboard)
+        }
+        else if (activeView === "gallery") {
+            setComponents(showGallery)
+        }
+    }, [activeView])
+
+    return (
+        <section className="mainContainer">
+                {components}
         </section>
     )
 

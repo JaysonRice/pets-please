@@ -5,7 +5,7 @@ import AddPetForm from "./AddPetForm"
 import { PetContext } from "../petFeed/PetProvider"
 import { UserContext } from "../profiles/UserProvider"
 
-export default () => {
+export default ( {setActiveView }) => {
 
     const { pets } = useContext(PetContext)
     const { users } = useContext(UserContext)
@@ -34,7 +34,7 @@ export default () => {
                 
             </div>
 
-            <Button block outline color="danger">Gallery</Button>
+            <Button  block outline color="danger" onClick={() => setActiveView("gallery")}>Gallery</Button>
             <h3 className="myPetsUsername"> {loggeduser.username}'s Pets</h3>
 
             <div className="pets">
