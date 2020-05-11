@@ -5,9 +5,11 @@ import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 import { FollowerContext } from "../followes/FollowerProvider"
 import { PetContext } from "./PetProvider"
-import "../Layout.css" 
+import "../Layout.css"
+import { FilterByType } from "./FilterPetFeed"
+import { Button } from "reactstrap"
 
-export default ({ petType }) => {
+export default ({ petType, setPetType }) => {
 
     const { petPics } = useContext(PetPicContext)
     const { usersFollowed } = useContext(FollowerContext)
@@ -70,7 +72,7 @@ export default ({ petType }) => {
                 filteredPets = allPetPictures
 
             } else if (petType !== "0") {
-                
+
                 filteredPets = allPetPictures.filter(userPic => userPic.pet.pettypeId === parseInt(petType))
             }
 
@@ -82,17 +84,25 @@ export default ({ petType }) => {
 
     return (
         <>
-        <div className="mainDashboardContainer">
-            <div className="petPics">
-                {
-                    renderedPetPics.map(pic => {
+            <div className="mainFeedFilterContainer">
+                <FilterByType setPetType={setPetType} />
 
-                        const use = users.find(u => u.id === pic.pet.userId)
-
-                        return <MainFeedPet key={pic.id} user={use} petpic={pic} />
-                    })
-                }
+                <div className="mainFeedTopItem">
+                    <Button size="sm">Logout</Button>
+                </div>
             </div>
+
+            <div className="mainDashboardContainer">
+                <div className="petPics">
+                    {
+                        renderedPetPics.map(pic => {
+
+                            const use = users.find(u => u.id === pic.pet.userId)
+
+                            return <MainFeedPet key={pic.id} user={use} petpic={pic} />
+                        })
+                    }
+                </div>
             </div>
         </>
     )

@@ -4,8 +4,9 @@ import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 import { PetContext } from "../petFeed/PetProvider"
 import GalleryPet from "./GalleryPet"
+import { FilterByName } from "./FilterPets"
 
-export default ({ petName, activeView }) => {
+export default ({ petName, setPetName }) => {
     
     const { petPics } = useContext(PetPicContext)
     const { pets } = useContext(PetContext)
@@ -42,11 +43,12 @@ export default ({ petName, activeView }) => {
             setRenderedPetPics(filteredPets)
 
         },
-        [petName, activeView, pets,]
+        [petName, pets,]
     )
 
     return (
         <>
+            <FilterByName setPetName={setPetName}/>
             <div className="galleryPics">
                 {
                     renderedPetPics.map(pic => {

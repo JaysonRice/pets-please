@@ -33,8 +33,7 @@ export default () => {
                 <MyPetList setActiveView={setActiveView} />
             </div>
             <div className="mainFeedContainer box">
-                <FilterByType setPetType={setPetType} />
-                <MainFeedPetList petType={petType} />
+                <MainFeedPetList petType={petType} setPetType={setPetType}/>
             </div>
             <div className="followersContainer box">
                 <SearchBar setTerms={setTerms} />
@@ -48,8 +47,7 @@ export default () => {
     const showGallery = () => (
         <div>
             <div className="fakeLink href" onClick={() => setActiveView("dashboard")}>Dashboard</div>
-            <FilterByName setPetName={setPetName} />
-            <GalleryList petName={petName} activeView={activeView} />
+            <GalleryList petName={petName} setPetName={setPetName} />
         </div>
     )
 
@@ -60,7 +58,7 @@ export default () => {
         else if (activeView === "gallery") {
             setComponents(showGallery)
         }
-    }, [activeView, petType, petName])
+    }, [activeView, petType, petName, searchTerms])
 
     return (
         <FollowerProvider>

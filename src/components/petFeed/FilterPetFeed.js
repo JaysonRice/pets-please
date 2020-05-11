@@ -7,7 +7,6 @@ export const FilterByType = ({ setPetType }) => {
     const { petTypes } = useContext(PetTypeContext)
 
     return (
-        <div className="mainFeedFilterContainer">
             <div className="mainFeedTopItem">
             <label className="selectItself" htmlFor="petTypes"></label>
             <select onChange={e => setPetType(e.target.value)}
@@ -23,10 +22,6 @@ export const FilterByType = ({ setPetType }) => {
                     </option>
                 ))}
             </select>
-            </div>
-            <div className="mainFeedTopItem">
-            <Button size="sm">Logout</Button>
-            </div>
         </div>
     )
 }
