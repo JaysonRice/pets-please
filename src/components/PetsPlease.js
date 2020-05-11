@@ -1,12 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Dashboard from "./Dashboard"
 import Auth from "./auth/Auth"
 
 export default () => {
-    const [check, update] = useState(false)
-    const toggle = () => update(!check)
+    const [activeUser, setActiveUser] = useState(localStorage.getItem("pets_please_user") || "")
 
-    return (
-        localStorage.getItem("pets_please_user") ? <Dashboard /> : <Auth toggle={toggle} />
-    )
+return activeUser ? <Dashboard setActiveUser={setActiveUser} />: <Auth setActiveUser={setActiveUser} />
+
 }
