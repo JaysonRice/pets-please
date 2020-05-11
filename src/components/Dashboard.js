@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import "./Layout.css"
 import "./PetsPlease.css"
 import MainFeedPetList from "./petFeed/MainFeedPetList"
@@ -7,10 +7,8 @@ import MyPetList from "./myPets/MyPetList"
 import FollowerList from "./followes/FollowerList"
 import { PetProvider } from "./petFeed/PetProvider"
 import { PetTypeProvider } from "./petFeed/PetTypeProvider"
-import { PetPicProvider } from "./profiles/PetPictureProvider"
+import { PetPicProvider, PetPicContext } from "./profiles/PetPictureProvider"
 import { UserProvider } from "./profiles/UserProvider"
-import { FilterByType } from "./petFeed/FilterPetFeed"
-import { FilterByName } from "./profiles/FilterPets"
 import { FollowerProvider } from "./followes/FollowerProvider"
 import { SearchBar } from "./followes/UserSearch"
 import { SearchResults } from "./followes/SearchResults"
@@ -23,6 +21,9 @@ export default () => {
 
     const [petType, setPetType] = useState("0")
     const [petName, setPetName] = useState("0")
+
+    // const allPetPics = useContext(PetPicContext)
+    const [renderedPetPics, setRenderedPetPics] = useState([])
 
 
     const showDashboard = () => (
@@ -42,12 +43,12 @@ export default () => {
             </div>
         </div>
     )
-
+    // setRenderedPetPics={setRenderedPetPics} renderedPetPics={renderedPetPics}
 
     const showGallery = () => (
         <div>
             <div className="fakeLink href" onClick={() => setActiveView("dashboard")}>Dashboard</div>
-            <GalleryList petName={petName} setPetName={setPetName} />
+            <GalleryList petName={petName}  setPetName={setPetName}  />
         </div>
     )
 

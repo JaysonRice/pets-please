@@ -43,7 +43,7 @@ export default ({ petName, setPetName }) => {
             setRenderedPetPics(filteredPets)
 
         },
-        [petName, pets,]
+        [petName, petPics]
     )
 
     return (
