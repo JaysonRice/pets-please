@@ -69,6 +69,7 @@ export default ({ petType }) => {
                 filteredPets = allPetPictures
 
             } else if (petType !== "0") {
+                debugger
                 filteredPets = allPetPictures.filter(userPic => userPic.pet.pettypeId === parseInt(petType))
             }
 
