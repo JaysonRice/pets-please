@@ -11,7 +11,7 @@ export default ({ petpic }) => {
     return (
         <>
         <div className="galleryPetCard">
-            <Card className="galleryCard" style={{ width: '90%', }}>
+            <Card className="galleryCard" style={{ width: '100%', }}>
                 <CardImg top width="100%" src={petpic.url} alt="Card image cap" />
                 <CardBody>
                     <CardSubtitle className="postedBy">{petpic.pet.name} - Posted on {new Date (petpic.timestamp).toLocaleDateString()}</CardSubtitle>

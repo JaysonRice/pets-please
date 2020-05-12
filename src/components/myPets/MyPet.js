@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import {
     Card, CardBody,
-     CardSubtitle, Button, Modal, 
+    Button, Modal, 
     ModalHeader, ModalBody 
 } from 'reactstrap';
 import "./MyPet.css"

@@ -61,9 +61,9 @@ export default ({ petName, setPetName, setActiveView }) => {
     return (
         <>
         <header className="galleryHeader">
-            
-            <h3>{loggeduser.username}'s Gallery</h3>
-            <Button outline color="primary" onClick={() => setActiveView("dashboard")}size="sm">Back to Dashboard</Button>
+        <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/c_scale,w_250/v1589296165/bluecropped_bod0er.png" alt="Pets please logo" />
+            <h2>{loggeduser.username}'s Gallery</h2>
+            <Button outline color="primary" onClick={() => setActiveView("dashboard")}>Back to Dashboard</Button>
             </header>
             <FilterByName setPetName={setPetName} />
             <div className="galleryPicContainer">
