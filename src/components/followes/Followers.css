@@ -34,7 +34,14 @@
     background-color: #daf0ff;
     border-radius: .2rem;
     margin-top:.5rem;
+}
 
+.individualFollowedUser:hover {
+  justify-content: space-between;
+  background-color: #daf0ff;
+  border-radius: .2rem;
+  margin-top:.5rem;
+  transform: scale(1.03)
 }
 
 .fakeLink {
