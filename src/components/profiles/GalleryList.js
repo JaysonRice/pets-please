@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import "./ProfilePage.css"
 import { PetPicContext } from "../profiles/PetPictureProvider"
-import { PetContext } from "../petFeed/PetProvider"
 import GalleryPet from "./GalleryPet"
 import { FilterByName } from "./FilterPets"
 import { Button } from "reactstrap"
@@ -62,10 +61,11 @@ export default ({ petName, setPetName, setActiveView }) => {
     return (
         <>
         <header className="galleryHeader">
-            <FilterByName setPetName={setPetName} />
-            <h1>{loggeduser.username}'s Gallery</h1>
-            <Button size="sm" outline color="danger" onClick={() => setActiveView("dashboard")}>Back to Dashboard</Button>
+            
+            <h3>{loggeduser.username}'s Gallery</h3>
+            <Button outline color="primary" onClick={() => setActiveView("dashboard")}size="sm">Back to Dashboard</Button>
             </header>
+            <FilterByName setPetName={setPetName} />
             <div className="galleryPicContainer">
                 {
                     renderedPetPics.map(pic => {
