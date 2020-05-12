@@ -1,7 +1,17 @@
 .galleryHeader{
     display: flex;
     justify-content: space-evenly;
-    padding-top: 1rem;
+    padding: 0.4rem 0rem;
+    align-items: center;
+    border-bottom: solid 3px #339AFF;
+    background-color: white;
+
+}
+
+.galleryFilterContainer{
+    width: 15%;
+    display: flex;
+    margin: 1rem 0rem 0rem 2rem ;
 }
 
 .galleryPicContainer{
@@ -10,6 +20,7 @@
     justify-content: space-evenly;
     padding: 1rem 0rem;
 }
+
 /* Pet pic card surrounding div */
 .galleryPetCard{
     flex-basis: 30%;

@@ -90,7 +90,7 @@ export default ({ petType, setPetType, setActiveUser }) => {
 
                 <div className="mainFeedTopItem">
 
-                    <Button onClick={() => {
+                    <Button outline color="primary" onClick={() => {
                         setActiveUser(null)
                         localStorage.setItem("pets_please_user", "")
                     }}

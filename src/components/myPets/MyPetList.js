@@ -30,11 +30,11 @@ export default ( {setActiveView }) => {
         <>
             <div className="logoContainer">
 
-                <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/c_scale,w_300/v1588278178/RedCropped_xxl9bv.png" alt="" />
+                <img src="https://res.cloudinary.com/dawhgtkqk/image/upload/c_scale,w_300/v1589296165/bluecropped_bod0er.png" alt="Pets please logo" />
                 
             </div>
 
-            <Button  block outline color="danger" onClick={() => setActiveView("gallery")}>Gallery</Button>
+            <Button  block outline color="primary" onClick={() => setActiveView("gallery")}>Gallery</Button>
             <h3 className="myPetsUsername"> {loggeduser.username}'s Pets</h3>
 
             <div className="pets">

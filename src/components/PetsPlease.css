@@ -1,5 +1,5 @@
 .mainContainer{
-background-color: cornsilk;
+background-color: #daf0ff;
 }
 
 .box{
@@ -9,16 +9,6 @@ background-color: cornsilk;
     background-color: white;
 }
 
-h5 {
-    color:#FF5112;
-}
-
-.usersFollowedContainer{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #FF5112;
-    border-radius: 0.2rem;
-    box-shadow: 0px 2px 10px -10px black;
-    padding: 1rem;
-    background: white;
-}
+h5{
+    color: #339AFF;
+  }

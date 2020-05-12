@@ -15,7 +15,7 @@ export default ({ user }) => {
 
                 <p className="followedUserName">{user.username}</p>
 
-                <Button size="sm" outline color="danger" onClick={() => {
+                <Button size="sm" color="primary" onClick={() => {
                     unFollowerUser(selectedUser.id)
                 }}>x</Button>
             </section>
