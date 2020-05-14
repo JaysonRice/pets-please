@@ -13,7 +13,7 @@ import { FollowerProvider } from "./followes/FollowerProvider"
 import { SearchBar } from "./followes/UserSearch"
 import { SearchResults } from "./followes/SearchResults"
 
-export default ({setActiveUser}) => {
+export default ({ setActiveUser }) => {
     const [searchTerms, setTerms] = useState(null)
 
     const [activeView, setActiveView] = useState("dashboard")
@@ -28,7 +28,7 @@ export default ({setActiveUser}) => {
                 <MyPetList setActiveView={setActiveView} />
             </div>
             <div className="mainFeedContainer box">
-                <MainFeedPetList setActiveUser={setActiveUser} petType={petType} setPetType={setPetType}/>
+                <MainFeedPetList setActiveUser={setActiveUser} petType={petType} setPetType={setPetType} />
             </div>
             <div className="followersContainer box">
                 <SearchBar setTerms={setTerms} />
@@ -40,7 +40,7 @@ export default ({setActiveUser}) => {
 
     const showGallery = () => (
         <div className="mainGalleryContainer">
-            <GalleryList setActiveView={setActiveView} petName={petName} setPetName={setPetName}  />
+            <GalleryList setActiveView={setActiveView} petName={petName} setPetName={setPetName} />
         </div>
     )
 
@@ -55,8 +55,8 @@ export default ({setActiveUser}) => {
 
     return (
         <FollowerProvider>
-            <PetProvider>
-                <PetPicProvider>
+            <PetPicProvider>
+                <PetProvider>
                     <PetTypeProvider>
                         <UserProvider>
                             <div className="mainContainer">
@@ -64,8 +64,8 @@ export default ({setActiveUser}) => {
                             </div>
                         </UserProvider>
                     </PetTypeProvider>
-                </PetPicProvider>
-            </PetProvider>
+                </PetProvider>
+            </PetPicProvider>
         </FollowerProvider>
     )
 

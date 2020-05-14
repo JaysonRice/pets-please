@@ -38,6 +38,7 @@ export const PetPicProvider = (props) => {
         <PetPicContext.Provider value={
             {
                 petPics,
+                getPetPics,
                 addPetPic,
                 deletePetPic,
             }
