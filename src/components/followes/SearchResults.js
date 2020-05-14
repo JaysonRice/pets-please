@@ -31,7 +31,7 @@ export const SearchResults = ({ searchTerms, setTerms }) => {
         } else {
             setFiltered([])
         }
-    }, [searchTerms, users])
+    }, [searchTerms, currentUserId, users])
 
 
     return (

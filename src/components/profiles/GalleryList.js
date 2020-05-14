@@ -21,7 +21,7 @@ export default ({ petName, setPetName, setActiveView }) => {
             const currentlyLoggedUser = users.find(user => user.id === parseInt(currentUserId)) || {}
             setLoggedUser(currentlyLoggedUser)
         },
-        [users]
+        [users, currentUserId]
     )
 
     useEffect(

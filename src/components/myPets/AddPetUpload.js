@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { Button } from 'reactstrap'
 import { PetPicContext } from '../profiles/PetPictureProvider'
+
+// This component is responsible for uploading pictures to my cloudinary storage 
+// and saving the URL to the local API
 
 export const CloudinaryUpload = ({ pet, toggleAdd }) => {
   const [image, setImage] = useState('')
@@ -47,7 +49,7 @@ export const CloudinaryUpload = ({ pet, toggleAdd }) => {
       {loading ? (
         <h4>Loading...</h4>
       ) : (
-          <img src={image} style={{ width: '300px' }} />
+          <img src={image} style={{ width: '300px' }}  />
         )}
     </div>
 

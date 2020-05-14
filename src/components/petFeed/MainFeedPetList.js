@@ -5,7 +5,6 @@ import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 import { FollowerContext } from "../followes/FollowerProvider"
 import { PetContext } from "./PetProvider"
-import "../Layout.css"
 import { FilterByType } from "./FilterPetFeed"
 import { Button } from "reactstrap"
 
@@ -15,6 +14,9 @@ export default ({ petType, setPetType, setActiveUser }) => {
     const { usersFollowed } = useContext(FollowerContext)
     const { pets } = useContext(PetContext)
     const { users } = useContext(UserContext)
+    
+    const [allPetPics, setAllPetPics] = useState(petPics)
+
     const [renderedPetPics, setRenderedPetPics] = useState([])
 
     useEffect(
@@ -38,7 +40,7 @@ export default ({ petType, setPetType, setActiveUser }) => {
                 });
             })
 
-            // Everybody you follow's pets as objects
+            // Everybody you follow's pet pictures as objects
 
             let friendPetPics = []
 
@@ -79,7 +81,7 @@ export default ({ petType, setPetType, setActiveUser }) => {
             setRenderedPetPics(filteredPets)
 
         },
-        [petType, petPics, pets, users, usersFollowed]
+        [petType, pets, petPics, users, usersFollowed]
     )
 
     // Map over array of just your pics and pics of users you follow
