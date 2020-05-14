@@ -14,15 +14,13 @@ export default ({ petType, setPetType, setActiveUser }) => {
     const { usersFollowed } = useContext(FollowerContext)
     const { pets } = useContext(PetContext)
     const { users } = useContext(UserContext)
-    
-    const [allPetPics, setAllPetPics] = useState(petPics)
 
     const [renderedPetPics, setRenderedPetPics] = useState([])
+
 
     useEffect(
         () => {
             const currentUserId = localStorage.getItem('pets_please_user')
-
             const filteredFollowed = usersFollowed.filter(followedUser => followedUser.userId === parseInt(currentUserId));
 
             // Everybody you follow as an object
@@ -31,20 +29,17 @@ export default ({ petType, setPetType, setActiveUser }) => {
             })
 
             // Everybody you follow's pets as objects
+            const followedUserPetsArrays = everyoneYouFollow.map(singleFriend => {
+                return pets.filter(pet => pet.userId === singleFriend.id)
+            });
 
-            let friendPets = []
-
-            everyoneYouFollow.map(singleFriend => {
-                singleFriend.pets.forEach(pet => {
-                    friendPets.push(pet)
-                });
-            })
+            // This line takes all the pet arrays and squishes them into one array
+            var followedUserPets = [].concat.apply([], followedUserPetsArrays);
 
             // Everybody you follow's pet pictures as objects
-
             let friendPetPics = []
 
-            friendPets.forEach(singlePet => {
+            followedUserPets.forEach(singlePet => {
 
                 const foundPics = petPics.filter(singlePic =>
                     singlePic.petId === singlePet.id
@@ -106,8 +101,9 @@ export default ({ petType, setPetType, setActiveUser }) => {
                         renderedPetPics.map(pic => {
 
                             const use = users.find(u => u.id === pic.pet.userId)
+                            const chosenPet = pets.find(p => p.id === pic.pet.id) || []
 
-                            return <MainFeedPet key={pic.id} user={use} petpic={pic} />
+                            return <MainFeedPet key={pic.id} user={use} pet={chosenPet} petpic={pic} />
                         })
                     }
                 </div>
