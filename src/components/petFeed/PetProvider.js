@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import { PetPicContext } from "../profiles/PetPictureProvider"
 
 export const PetContext = React.createContext()
 
 export const PetProvider = (props) => {
+
+    const { getPetPics } = useContext(PetPicContext) 
     const [pets, setPets] = useState([])
 
     const getPets = () => {
@@ -27,6 +30,7 @@ export const PetProvider = (props) => {
             method: "DELETE"
         })
             .then(getPets)
+            .then(getPetPics)
     }
 
     const editPet = pet => {

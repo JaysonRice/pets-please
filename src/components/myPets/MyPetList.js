@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import MyPet from "./MyPet"
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap"
 import AddPetForm from "./AddPetForm"
 import { PetContext } from "../petFeed/PetProvider"
 import { UserContext } from "../profiles/UserProvider"
@@ -21,7 +21,7 @@ export default ( {setActiveView }) => {
             const currentlyLoggedUser = users.find(user => user.id === parseInt(currentUserId)) || {}
             setLoggedUser(currentlyLoggedUser)
         },
-        [users, pets]
+        [users, pets, currentUserId]
     )
     const filteredUserPets = pets.filter(userPet => userPet.userId === parseInt(currentUserId));
 

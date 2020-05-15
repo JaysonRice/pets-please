@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { PetTypeContext } from "./PetTypeProvider"
-import { Button } from 'reactstrap'
 
 export const FilterByType = ({ setPetType }) => {
 

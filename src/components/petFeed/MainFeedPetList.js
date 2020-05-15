@@ -5,7 +5,6 @@ import { PetPicContext } from "../profiles/PetPictureProvider"
 import { UserContext } from "../profiles/UserProvider"
 import { FollowerContext } from "../followes/FollowerProvider"
 import { PetContext } from "./PetProvider"
-import "../Layout.css"
 import { FilterByType } from "./FilterPetFeed"
 import { Button } from "reactstrap"
 
@@ -15,12 +14,13 @@ export default ({ petType, setPetType, setActiveUser }) => {
     const { usersFollowed } = useContext(FollowerContext)
     const { pets } = useContext(PetContext)
     const { users } = useContext(UserContext)
+
     const [renderedPetPics, setRenderedPetPics] = useState([])
+
 
     useEffect(
         () => {
             const currentUserId = localStorage.getItem('pets_please_user')
-
             const filteredFollowed = usersFollowed.filter(followedUser => followedUser.userId === parseInt(currentUserId));
 
             // Everybody you follow as an object
@@ -29,20 +29,17 @@ export default ({ petType, setPetType, setActiveUser }) => {
             })
 
             // Everybody you follow's pets as objects
+            const followedUserPetsArrays = everyoneYouFollow.map(singleFriend => {
+                return pets.filter(pet => pet.userId === singleFriend.id)
+            });
 
-            let friendPets = []
+            // This line takes all the pet arrays and squishes them into one array
+            var followedUserPets = [].concat.apply([], followedUserPetsArrays);
 
-            everyoneYouFollow.map(singleFriend => {
-                singleFriend.pets.forEach(pet => {
-                    friendPets.push(pet)
-                });
-            })
-
-            // Everybody you follow's pets as objects
-
+            // Everybody you follow's pet pictures as objects
             let friendPetPics = []
 
-            friendPets.forEach(singlePet => {
+            followedUserPets.forEach(singlePet => {
 
                 const foundPics = petPics.filter(singlePic =>
                     singlePic.petId === singlePet.id
@@ -79,7 +76,7 @@ export default ({ petType, setPetType, setActiveUser }) => {
             setRenderedPetPics(filteredPets)
 
         },
-        [petType, petPics, pets, users, usersFollowed]
+        [petType, pets, petPics, users, usersFollowed]
     )
 
     // Map over array of just your pics and pics of users you follow
@@ -104,8 +101,9 @@ export default ({ petType, setPetType, setActiveUser }) => {
                         renderedPetPics.map(pic => {
 
                             const use = users.find(u => u.id === pic.pet.userId)
+                            const chosenPet = pets.find(p => p.id === pic.pet.id) || []
 
-                            return <MainFeedPet key={pic.id} user={use} petpic={pic} />
+                            return <MainFeedPet key={pic.id} user={use} pet={chosenPet} petpic={pic} />
                         })
                     }
                 </div>
