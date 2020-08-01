@@ -4,6 +4,8 @@ Pet's Please is a single page application that allows users to save pictures of 
 
 Pets please has been [deployed to Heroku](https://pets-please.herokuapp.com/). Feel free to register with a fake account to test out the features without installing anything.
 
+![github-small](https://user-images.githubusercontent.com/61162758/89109324-2beffc00-d40e-11ea-8265-b52fd3bdd061.PNG)
+
 ## Installation
 
 Along with the Pets Please repository, you will need to clone the [Pets Please-API](https://github.com/JaysonRice/pets-please-api) repo as well which contains the data structure and some existing users to follow.
