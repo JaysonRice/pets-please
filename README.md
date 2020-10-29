@@ -12,7 +12,7 @@ Along with the Pets Please repository, you will need to clone the [Pets Please-A
 
 You will need [json-server](https://www.npmjs.com/package/json-server) installed in order to create the persistant data storage.
 
-To start the json server, run the following command in your terminal inside of the geckospot-api directory:
+To start the json server, run the following command in your terminal inside of the pets please api directory:
 
 ```bash
 json-server -p 8088 -w database.json
