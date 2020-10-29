@@ -17,7 +17,7 @@ To start the json server, run the following command in your terminal inside of t
 ```bash
 json-server -p 8088 -w database.json
 ```
-To start the application, run the following command in your terminal inside of the geckospot directory:
+To start the application, run the following command in your terminal inside of the pets-please directory:
 
 ```bash
 npm start
