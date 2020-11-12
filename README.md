@@ -1,6 +1,6 @@
 # Pets Please
 
-Pet's Please is a single page application that allows users to save pictures of their pets to view on a main social media feed. Users can follow other users to tailor their main feed. Customize your experience by following good pet photographers and using the ability to filter by animal type.
+Pets Please is a single page application that allows users to save pictures of their pets to view on a main social media feed. Users can follow other users to tailor their main feed. Customize your experience by following good pet photographers and using the ability to filter by animal type.
 
 Pets please has been [deployed to Heroku](https://pets-please.herokuapp.com/). Feel free to register with a fake account to test out the features without installing anything.
 
